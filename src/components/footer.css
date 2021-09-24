@@ -1,0 +1,9 @@
+.whiteText{
+    color: white;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #282828;
+    border-color: #999999;
+}
