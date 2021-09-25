@@ -7,3 +7,11 @@
     background-color: white;
     color: rgb(44, 44, 44);
 }
+
+div.container{
+    display: block;
+}
+
+.drop{
+    margin: auto;
+}

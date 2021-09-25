@@ -33,7 +33,7 @@ class Main extends Component {
                           onClick={e => e.preventDefault()}
                           size="sm"
                         >
-                         FreeLancer
+                       Login as Member
                         </Button>
                        
                         <Button
@@ -42,7 +42,7 @@ class Main extends Component {
                           onClick={e => e.preventDefault()}
                           size="sm"
                         >
-                    FreeLancer
+                Log in as   User
                         </Button>
                       </div>
             
