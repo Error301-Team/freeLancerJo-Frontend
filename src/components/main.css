@@ -1,0 +1,35 @@
+#mainDiv{
+    height: 600px;
+    margin-top: 16px;
+
+}
+.button2{
+  /* position:absolute;
+  margin-left: 630px; */
+ 
+  position: relative;
+  max-width: 500px;
+  transform: translate(6%,501%);
+  left: 75%;
+}
+
+.button1{
+    /* position: relative;
+    margin-left: 220px; */
+
+    position: relative;
+max-width: 500px;
+
+transform: translate(-200%,501%);
+left: 25%;
+  }
+
+  .cardImage {
+    position: relative;
+max-width: 500px;
+transform: translate(-50%,-10%);
+left: 50%;
+  }
+        
+
+       
