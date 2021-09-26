@@ -11,7 +11,7 @@ import Freelancerprofile from './components/Freelancerprofile'
 import Phtography from './components/Phtography';
 import Ourmission from './components/Ourmission';
 import Contactus from './components/Contactus';
-//import AllFreeLancer from './components/AllFreeLancer';
+import PostJobOffer from './components/PostJobOffer';
 import {
   BrowserRouter as Router,
   Switch,
@@ -24,6 +24,22 @@ import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 // import {  } from 'react-bootstrap';
 class App extends Component {
+
+  constructor(props){
+    super(props);
+    this.state={
+      data:[]
+    }
+  }
+  
+  // componentDidMount = () =>{
+  //   axios.get().then(res=>{
+  //     this.setState({
+  //       data: res.data,
+  //     })
+  //   })
+  // }
+
   render() {
     return (
       <>
@@ -74,8 +90,11 @@ class App extends Component {
               <Ourmission />
               <Footer />
             </Route>
-
-            
+            <Route path="/postjoboffer">
+              <Header />
+              <PostJobOffer />
+              <Footer />
+            </Route>
           </Switch>
         </Router>
       </>
