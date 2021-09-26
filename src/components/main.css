@@ -1,8 +1,4 @@
-#mainDiv{
-    height: 600px;
-    margin-top: 16px;
 
-}
 .button2{
   /* position:absolute;
   margin-left: 630px; */
@@ -24,10 +20,24 @@ transform:translate(-115%,501%);
 left: 25%;
   }
 
-  .cardImage {
-    position: relative;
+.cardImage {
+position: relative;
 max-width: 500px;
 transform: translate(-50%,-10%);
 left: 50%;
   }
         
+.mainImage{
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: -5;
+}
+
+.card{
+  background-color: transparent !important;
+}
+
+body{
+  background-color: #082032 !important;
+}

@@ -9,7 +9,6 @@ import axios from 'axios'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 // import {  } from 'react-bootstrap';
-
 class App extends Component {
   render() {
     return (

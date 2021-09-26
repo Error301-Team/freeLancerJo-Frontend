@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 import './main.css';
 import { Button, Card, Container, Row, Col } from 'react-bootstrap';
-import freeL from "../assets/freeL.jpg"
+import freeL from "../assets/freeL.jpg";
+import mainImage from "../assets/backgroundstyle.jpg";
 
 class Main extends Component {
     render() {
 
 
         return (
-            <div id='mainDiv'>
-               <div></div> 
-                <Container>
+            <div className="mainDiv">
+              <img className="mainImage" src={mainImage} alt="" />
+                {/* <Container>
               <Card className="">
        
                   <Row className="justify-content-center">
@@ -63,7 +64,7 @@ class Main extends Component {
                   </div>
            
               </Card>
-            </Container>
+            </Container> */}
      
             </div>
 
