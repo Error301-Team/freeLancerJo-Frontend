@@ -153,3 +153,7 @@ Describe at least:
 
 - - -
      Slack the Private Channel.
+     
+#### Wireframe:
+![](https://github.com/Error301-Team/freeLancerJo-frontend/blob/main/301error-FreeLancerJo%20Wireframe.jpg) 
+

@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import logo from "../assets/logoColor250px.png"
 import './header.css';
-import { Navbar, Container, Nav, Button, Col, DropdownButton, Dropdown, Row } from 'react-bootstrap';
-
+import { Navbar, Container, Nav, Button, Col, DropdownButton, Dropdown, Row, NavItem } from 'react-bootstrap';
+import { Link } from "react-router-dom"
 class Header extends Component {
     render() {
         return (
@@ -12,27 +12,25 @@ class Header extends Component {
                         <Row>
 
                             <Navbar >
-                                <Col lg={4}>  <Navbar.Brand href="#home"><img id='logo' src={logo} alt="" /></Navbar.Brand></Col>
-                                <Col lg={5}>
+                                <Col lg={2}>  <Navbar.Brand href="/"><img id='logo' src={logo} alt="" /></Navbar.Brand></Col>
+                                <Col lg={8}>
                                     <Nav className="me-auto">
-                                        <Nav.Link bg="light" variant="light" href="#home">Home</Nav.Link>
-                                        <Nav.Link href="#features">Our Mission</Nav.Link>
-                                        <Nav.Link href="#pricing">Contact Us</Nav.Link>
+                                        <Link to="/" className="nav-link">Home</Link>
+                                        <Link to="/contactus" className="nav-link">Contact Us</Link>
+                                        <Link to="/ourmission" className="nav-link">Our Mission</Link>
+                                        <Link to="/jobcategories" className="nav-link">Job Categories</Link>
+                                        <Link to="/accountform" className="nav-link">accountform</Link>
+                                        <Link to="/designs" className="nav-link">designs</Link>
+                                        <Link to="/developent" className="nav-link">developent</Link>
+                                        <Link to="/freelancerprofile" className="nav-link">freelancerprofile</Link>
+                                        <Link to="/phtography" className="nav-link">phtography</Link>
+                                  
                                     </Nav>
                                 </Col>
-
-
                                 <Col lg={2} className="login">
                                     <Button variant="light">Login</Button>{' '}
                                     <Button variant="light">Sign Up</Button>{' '}
                                 </Col>
-
-                                <Col lg={1} className="drop">   <DropdownButton id="dropdown-item-button" title="Menu">
-                                    <Dropdown.ItemText>Dropdown item text</Dropdown.ItemText>
-                                    <Dropdown.Item as="button">Action</Dropdown.Item>
-                                    <Dropdown.Item as="button">Another action</Dropdown.Item>
-                                    <Dropdown.Item as="button">Something else</Dropdown.Item>
-                                </DropdownButton>; </Col>
                             </Navbar>
                         </Row>
                     </Container>
