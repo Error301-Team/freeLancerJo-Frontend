@@ -1,0 +1,55 @@
+#logo{
+    height: 65px;
+    
+}
+
+#dropdown-item-button{
+    background-color: white;
+    color: rgb(44, 44, 44);
+}
+.Navbar{
+    background-color: 082032;
+}
+a{
+    color: white !important;
+}
+div.container{
+    display: block;
+}
+
+.login{
+    display: flex !important;
+    flex-wrap: wrap !important;
+    width: 235px !important;
+    grid-gap: 20px 5px !important;
+    grid-gap: 20px 5px !important;
+    gap: 20px 30px !important;
+    justify-content: center;
+    margin: auto;
+}
+
+.drop{
+    display: flex !important;
+    flex-wrap: wrap !important;
+    width: 90px !important;
+    grid-gap: 20px 5px !important;
+    gap: 20px 5px !important;
+    justify-content: center;
+    margin: auto;
+}
+
+.navBack{
+background-color: #082032 !important;
+width: 100% !important;
+height: 90px !important;
+}
+
+/* .test {
+    height:100px;
+    background:linear-gradient(black 50%,red 50%, red); 
+}
+
+.test:hover {
+    background:linear-gradient(green 50%,red 50%, red);
+} */
+

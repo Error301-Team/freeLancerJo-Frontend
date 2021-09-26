@@ -1,0 +1,39 @@
+.whiteText{
+    color: white;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #282828;
+    border-color: #999999;
+}
+
+.Container{
+    background-color: #082032 !important;
+}
+.navDown{
+    background-color: #082032 !important;
+    width: 100% !important;
+    height: 90px !important;
+    }
+
+.nav{
+    background-color: bisque !important;
+}
+
+#navicons{
+    display: flex !important;
+    flex-wrap: wrap !important;
+    width: 300px !important;
+    gap: 20px 5px !important;
+    justify-content: center;
+}
+
+.me-auto{
+    justify-content: center;
+}
+
+.navDown{
+    position: fixed;
+    bottom: 0px;
+}
