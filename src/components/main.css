@@ -1,3 +1,43 @@
-#mainDiv{
-    height: 500px;
+
+.button2{
+  /* position:absolute;
+  margin-left: 630px; */
+ 
+  position: relative;
+  width: 200px;
+  transform: translate(-85%,501%);
+  left: 75%;
+}
+
+.button1{
+    /* position: relative;
+    margin-left: 220px; */
+
+    position: relative;
+width: 200px;
+
+transform:translate(-115%,501%);
+left: 25%;
+  }
+
+.cardImage {
+position: relative;
+max-width: 500px;
+transform: translate(-50%,-10%);
+left: 50%;
+  }
+        
+.mainImage{
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: -5;
+}
+
+.card{
+  background-color: transparent !important;
+}
+
+body{
+  background-color: #082032 !important;
 }
