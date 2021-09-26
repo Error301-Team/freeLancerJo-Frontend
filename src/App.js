@@ -12,7 +12,6 @@ import Phtography from './components/Phtography';
 import Ourmission from './components/Ourmission';
 import Contactus from './components/Contactus';
 import PostJobOffer from './components/PostJobOffer';
-
 import {
   BrowserRouter as Router,
   Switch,
