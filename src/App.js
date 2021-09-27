@@ -48,52 +48,72 @@ class App extends Component {
           <Switch>
             <Route exact path="/">
               <Header />
-              <Main />
+              <div style={{ minHeight: "580px" }}>
+                <Main />
+              </div>
               <Footer />
             </Route>
             <Route path="/contactus">
               <Header />
-              <Contactus />
+              <div style={{ minHeight: "580px" }}>
+                <Contactus />
+              </div>
               <Footer />
             </Route>
             <Route path="/jobcategories">
               <Header />
-              <Jobcategories />
+              <div style={{ minHeight: "455px" }}>
+                <Jobcategories />
+              </div>
               <Footer />
             </Route>
             <Route path="/accountform">
               <Header />
-              <Accountform />
+              <div style={{ minHeight: "580px" }}>
+                <Accountform />
+              </div>
               <Footer />
             </Route>
             <Route path="/designs">
               <Header />
-              <Designs />
+              <div style={{ minHeight: "580px" }}>
+                <Designs />
+              </div>
               <Footer />
             </Route>
             <Route path="/developent">
               <Header />
-              <Developent />
+              <div style={{ minHeight: "580px" }}>
+                <Developent />
+              </div>
               <Footer />
             </Route>
             <Route path="/freelancerprofile">
               <Header />
-              <Freelancerprofile />
+              <div style={{ minHeight: "580px" }}>
+                <Freelancerprofile />
+              </div>
               <Footer />
             </Route>
             <Route path="/phtography">
               <Header />
-              <Phtography />
+              <div style={{ minHeight: "580px" }}>
+                <Phtography />
+              </div>
               <Footer />
             </Route>
             <Route path="/ourmission">
               <Header />
-              <Ourmission />
+              <div style={{ minHeight: "580px" }}>
+                <Ourmission />
+              </div>
               <Footer />
             </Route>
             <Route path="/postjoboffer">
               <Header />
-              <PostJobOffer />
+              <div style={{ minHeight: "580px" }}>
+                <PostJobOffer />
+              </div>
               <Footer />
             </Route>
           </Switch>

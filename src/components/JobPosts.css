@@ -78,6 +78,7 @@
     .postcard__text {
       padding: 3rem;
       width: 100%;
+      background-color: #0820320a;
     }
 
     .media.postcard__text:before {
@@ -94,3 +95,25 @@
     display: grid;
     grid-template-columns:  auto auto;
 }
+
+.text-center{
+  position: relative;
+  top:75px;
+}
+
+.createBtn{
+position: relative;
+
+
+}
+.submitBtn{
+  position: relative;
+  
+
+}
+
+.cancelBtn{
+  position: relative;
+
+}
+
