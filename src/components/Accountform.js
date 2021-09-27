@@ -38,6 +38,7 @@ class Accountform extends Component {
             name: `${this.state.firstname} ${this.state.surname}`,
             phononumber: this.state.phononumber,
             email: this.state.email,
+            img: this.state.img,
             jobdescription: this.state.jobdescription,
             skills: this.state.skills.split(','),
             lauguages: this.state.lauguages.split(','),
@@ -45,9 +46,9 @@ class Accountform extends Component {
             location: this.state.location,
             experience: this.state.experience,
             Education:{AreaOfStudys:AreaOfStudys,Degree:Degree,From:From,To:To,School:School},
-            madeBy:"Wasem",
-            accoutType:"freelacer",
-            auth0:"done",   
+            // madeBy:"Wasem",
+            // accoutType:"freelacer",
+            // auth0:"done",   
         }
         console.log(data);
         let newUsersList=await axios.post(`${process.env.REACT_APP_BACKEND_URL}/createUser`, data);
@@ -166,7 +167,7 @@ class Accountform extends Component {
                     <div class="row">
                         <div class="col-md-3 border-right">
                             <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg" /><span class="font-weight-bold">Edogaru</span><span class="text-black-50">edogaru@mail.com.my</span><span> </span></div>
-                            <div id='centerit' class="col-md-6"><label class="labels">Image Link:</label><input onChange={handleChangeimg} type="text" class="form-control" placeholder="Image Link" /></div>
+                            <div id='centerit' class="col-md-6"><label class="labels">Image Link:</label><input onChange={this.handleChangeimg} type="text" class="form-control" placeholder="Image Link" /></div>
                         </div>
                         <div class="col-md-5 border-right">
                             <div class="p-3 py-5">
