@@ -22,7 +22,6 @@ export class Freelancerprofile extends Component {
         console.log(this.state.users);
     }
 
-
     render() {
         return (
 
@@ -110,10 +109,6 @@ export class Freelancerprofile extends Component {
                     </div>
                 </div>
             </section>
-
-
-
-
         )
     }
 }
