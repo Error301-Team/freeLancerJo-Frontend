@@ -17,7 +17,7 @@ class Footer extends Component {
                                     {/* <Nav.Link href="#home">Home</Nav.Link>
                                     <Nav.Link href="#features">Our Mission</Nav.Link>
                                     <Nav.Link href="#pricing">Contact Us</Nav.Link> */}
-                                    <span><h6 className='whiteText'>© Fiverr International Ltd. 2021</h6></span>
+                                    <span><h6 className='whiteText'>© FreeLancer Jo. 2021</h6></span>
                                     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
                                 </Nav>
                             </Col>

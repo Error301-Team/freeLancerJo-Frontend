@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
+import './JobPosts.css'
 
 export class Designs extends Component {
     render() {
         return (
             <div>
-                <h1 style={{ color: "white" }}>Designs</h1>
+           
             </div>
         )
     }
