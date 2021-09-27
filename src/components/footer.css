@@ -32,8 +32,12 @@
 .me-auto{
     justify-content: center;
 }
-
+/* 
 .navDown{
     position: fixed;
     bottom: 0px;
+} */
+
+#logoFooter{
+    height: 50px;
 }

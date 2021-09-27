@@ -52,3 +52,8 @@ body {
     justify-content: center;
     margin: auto;
 }
+.studies{
+    display: grid;
+    grid-template-columns: 175px 175px;
+    column-gap: 30px;
+}

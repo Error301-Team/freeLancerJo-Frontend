@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Form, Button, Modal } from 'react-bootstrap';
+import { Form, Button, Modal,Card } from 'react-bootstrap';
 import JobPost from "../assets/JobPost.png";
+import './JobPosts.css';
 class PostJobOffer extends Component {
     constructor(props) {
         super(props);
@@ -154,10 +155,23 @@ class PostJobOffer extends Component {
     render() {
         return (
 
-            <div>
+            <div style={{backgroundColor: 'white'}}>
                
                 {!(this.state.modalShow) &&
-                    <Button onClick={this.setModalShow} variant="primary">Primary</Button>}
+
+
+<Card className="text-center" >
+  <Card.Header ><h3> Current Job Post</h3> </Card.Header>
+  <Card.Body>
+ 
+    <Button  onClick={this.setModalShow} variant="warning">Add New Job Offer</Button>
+  </Card.Body>
+ 
+</Card>
+
+
+                    // <Button onClick={this.setModalShow} variant="primary">Primary</Button>
+                }
                 {this.state.modalShow &&
                     <><Modal.Dialog
                         size="lg"
@@ -204,15 +218,26 @@ class PostJobOffer extends Component {
                             </Modal.Body>
 
                             <Modal.Footer>
-                                <Button onClick={this.onHide} variant="secondary">Cancel</Button>
-                                <Button variant="primary" type="submit">
+                                <Button class="cancelBtn" onClick={this.onHide} variant="secondary">Cancel</Button>
+                                <Button class="submitBtn" variant="" style={{backgroundColor: '#ffc107'}} type="submit">
                                     Submit
                                 </Button>
+
+                                <Button class="createBtn" variant="" style={{backgroundColor: '#ffc107'}} onClick={this.setModalShow}>
+                            Create a New Job Offer
+                        </Button>
                             </Modal.Footer>
                         </Form>
-                    </Modal.Dialog><Button variant="primary" onClick={this.setModalShow}>
-                            Create a New Job Offer
-                        </Button></>
+                    </Modal.Dialog>
+                    
+</>
+
+
+
+                
+                    
+                    
+                  
                 }
                 {
                     this.state.job.map(element => {

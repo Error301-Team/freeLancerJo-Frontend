@@ -10,7 +10,7 @@ class Footer extends Component {
                     <Navbar>
                         <Container>
                             <Col lg={2}>
-                                <Navbar.Brand href="#home"><img id='logo' src={logo} alt="" /></Navbar.Brand>
+                                <Navbar.Brand href="#home"><img id='logoFooter' src={logo} alt="" /></Navbar.Brand>
                             </Col>
                             <Col lg={8}>
                                 <Nav className="me-auto">

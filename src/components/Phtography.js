@@ -19,37 +19,35 @@ class Phtography extends Component {
     }
     render() {
         return (
-            <div className="gridCards">
+ <><h1 class="h1FreeLancer">Our FreeLancers</h1><div className="gridCards">
 
-                {
-                 
-                    this.state.users.map(Element => {
-                        return (
-                        <div >
+                {this.state.users.map(Element => {
+                    return (
+                        <div>
 
-                            <div class="image-flip" >
+                            <div class="image-flip">
                                 <div class="mainflip flip-0">
                                     <div class="frontside">
                                         <div class="card">
                                             <div class="card-body text-center" style={{ backgroundColor: 'white' }}>
-                                                <p><img class=" img-fluid" style={{    objectFit: 'cover'}} src={Element.img} alt="card image" /></p>
+                                                <p><img class=" img-fluid" style={{ objectFit: 'cover' }} src={Element.img} alt="card image" /></p>
                                                 <h5 class="card-title">{Element.name}</h5>
                                                 <p class="card-text">{Element.job_describtion}</p>
-                                                <h6>Skills : {Element.skills}</h6>
+                                                <h6>Skills: {Element.skills}</h6>
                                                 <h6>Rating: {Element.rating}</h6>
-                                                <h6>Price Per/Hour : {Element.price}</h6>
+                                                <h6>Price Per/Hour: {Element.price}</h6>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="backside">
                                         <div class="card">
                                             <div class="card-body text-center mt-4">
-                                                <h6 class="card-title">Experience : {Element.experience}</h6>
+                                                <h6 class="card-title">Experience: {Element.experience}</h6>
                                                 {/* <h6 class="card-title">Education : "{Element.Education}"</h6> */}
-                                                <h6 class="card-title">Languages : {Element.lauguages}</h6>
-                                                <h6 class="card-title">Location : {Element.location}</h6>
-                                                <h6 class="card-title">Phone : {Element.phoneNumber}</h6>
-                                                <h6 class="card-title">Email : {Element.email}</h6>
+                                                <h6 class="card-title">Languages: {Element.lauguages}</h6>
+                                                <h6 class="card-title">Location: {Element.location}</h6>
+                                                <h6 class="card-title">Phone: {Element.phoneNumber}</h6>
+                                                <h6 class="card-title">Email: {Element.email}</h6>
 
                                             </div>
                                         </div>
@@ -58,11 +56,9 @@ class Phtography extends Component {
                             </div>
 
                         </div>
-                        )
-                    })
-                  
-                }
-            </div>
+                    );
+                })}
+            </div></>
         )
     }
 }
