@@ -1,23 +1,15 @@
 
-.button2{
-  /* position:absolute;
-  margin-left: 630px; */
- 
-  position: relative;
-  width: 200px;
-  transform: translate(-85%,501%);
-  left: 75%;
-}
 
 .button1{
     /* position: relative;
     margin-left: 220px; */
 
     position: relative;
+   
 width: 200px;
 
-transform:translate(-115%,501%);
-left: 25%;
+transform:translate(366%,-980%);
+z-index: +10;
   }
 
 .cardImage {
@@ -28,10 +20,12 @@ left: 50%;
   }
         
 .mainImage{
-  width: 100%;
-  position: fixed;
+  object-fit: cover;
+  /* width: 100%; */
+/*  
+  position: fixed; 
   top: 0;
-  z-index: -5;
+  z-index: -5; */
 }
 
 .card{

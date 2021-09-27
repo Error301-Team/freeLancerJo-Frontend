@@ -42,3 +42,18 @@ body {
     cursor: pointer;
     border: solid 1px #BA68C8
 }
+
+#centerit{
+    display: flex !important;
+    flex-wrap: wrap !important;
+    width: 235px !important;
+    grid-gap: 20px 5px !important;
+    gap: 20px 30px !important;
+    justify-content: center;
+    margin: auto;
+}
+.studies{
+    display: grid;
+    grid-template-columns: 175px 175px;
+    column-gap: 30px;
+}

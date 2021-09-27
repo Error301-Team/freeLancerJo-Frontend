@@ -10,14 +10,14 @@ class Footer extends Component {
                     <Navbar>
                         <Container>
                             <Col lg={2}>
-                                <Navbar.Brand href="#home"><img id='logo' src={logo} alt="" /></Navbar.Brand>
+                                <Navbar.Brand href="#home"><img id='logoFooter' src={logo} alt="" /></Navbar.Brand>
                             </Col>
                             <Col lg={8}>
                                 <Nav className="me-auto">
                                     {/* <Nav.Link href="#home">Home</Nav.Link>
                                     <Nav.Link href="#features">Our Mission</Nav.Link>
                                     <Nav.Link href="#pricing">Contact Us</Nav.Link> */}
-                                    <span><h6 className='whiteText'>© Fiverr International Ltd. 2021</h6></span>
+                                    <span><h6 className='whiteText'>© FreeLancer Jo. 2021</h6></span>
                                     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
                                 </Nav>
                             </Col>
