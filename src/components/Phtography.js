@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 import './Phtography.css'
 import axios from 'axios';
-
 class Phtography extends Component {
-
     constructor(props) {
         super(props);
         this.state = {
@@ -59,7 +57,6 @@ class Phtography extends Component {
                         )
                     })
                 }
-
             </>
         )
     }
