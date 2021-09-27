@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Form, Button, Modal } from 'react-bootstrap';
+import JobPost from "../assets/JobPost.png";
 class PostJobOffer extends Component {
     constructor(props) {
         super(props);
@@ -15,10 +16,27 @@ class PostJobOffer extends Component {
             qualification: [],
             salary: '',
             phononumber: '',
-            modalShow: false
+            modalShow: false,
+            job: []
         }
     }
+   
 
+    handleChange = e => {
+        let { name, description, email, category, location, skills, tools, qualification, salary, phononumber } = e.target.value
+        this.setState({
+            name: name,
+            description: description,
+            email: email,
+            category: category,
+            location: location,
+            skills: skills,
+            tools: tools,
+            qualification: qualification,
+            salary: salary,
+            phononumber: phononumber,
+        })
+    }
     submitHandle = async (e) => {
         e.preventDefault();
         let data = {
@@ -32,10 +50,11 @@ class PostJobOffer extends Component {
             qualification: this.state.qualification.split(','),
             salary: this.state.salary,
             phononumber: this.state.phononumber,
-            img: this.state.img
         }
         console.log(process.env.REACT_APP_BACKEND_API_KEY);
         let job = axios.post(`${process.env.REACT_APP_BACKEND_API_KEY}createJob`, data);
+       
+        
     }
 
     setModalShow = () => {
@@ -50,86 +69,97 @@ class PostJobOffer extends Component {
         })
     }
 
-    handleChangeJobName=(e)=>{
+    handleChangeJobName = (e) => {
         let name = e.target.value;
         this.setState({
-            name:name,
+            name: name,
         })
     }
 
-    
-    handleChangeEmail=(e)=>{
+
+    handleChangeEmail = (e) => {
         let email = e.target.value;
         this.setState({
-            email:email,
+            email: email,
         })
     }
 
-    handleChangeCategory=(e)=>{
-        let Category= e.target.value;
-        this.setstate({
-            Category:Category
+    handleChangeCategory = (e) => {
+        let category = e.target.value;
+        this.setState({
+            category: category,
         })
     }
 
-
-    handleChangeLocation=(e)=>{
+    handleChangeLocation = (e) => {
         let location = e.target.value;
         this.setState({
-            location:location,
+            location: location,
         })
     }
 
-    handleChangePhone=(e)=>{
+    handleChangePhone = (e) => {
         let phone = e.target.value;
         this.setState({
-            phononumber:phone,
+            phononumber: phone,
         })
     }
 
-    handleChangeskills=(e)=>{
+    handleChangeskills = (e) => {
         let skills = e.target.value;
         this.setState({
-            skills:skills,
+            skills: skills,
         })
     }
 
-    handleChangeTools=(e)=>{
+    handleChangeTools = (e) => {
         let tools = e.target.value;
         this.setState({
-            tools:tools,
+            tools: tools,
         })
     }
 
-    handleChangeQualification=(e)=>{
+    handleChangeQualification = (e) => {
         let qualification = e.target.value;
         this.setState({
-            qualification:qualification,
+            qualification: qualification,
         })
     }
 
-    handleChangeSalary=(e)=>{
+    handleChangeSalary = (e) => {
         let salary = e.target.value;
         this.setState({
-            salary:salary,
+            salary: salary,
         })
     }
 
-    handleChangeDescription=(e)=>{
+    handleChangeDescription = (e) => {
         let description = e.target.value;
         this.setState({
-            description:description,
+            description: description,
         })
     }
+    componentDidMount = async () => {
+       
+        let dbJobs=await axios.get(`https://freelancerjo-test.herokuapp.com/getJobs`)
+        console.log(typeof(dbJobs))
+        let results=dbJobs.data
+        this.setState({
+            job: results
+            
 
-
+        })
+        
+    }
     render() {
         return (
+
             <div>
-                {!(this.state.modalShow)&&
+               
+                {!(this.state.modalShow) &&
                     <Button onClick={this.setModalShow} variant="primary">Primary</Button>}
-                {this.state.modalShow&&
-                <><Modal.Dialog
+                {this.state.modalShow &&
+                    <><Modal.Dialog
                         size="lg"
                         aria-labelledby="contained-modal-title-vcenter"
                         centered
@@ -183,7 +213,55 @@ class PostJobOffer extends Component {
                     </Modal.Dialog><Button variant="primary" onClick={this.setModalShow}>
                             Create a New Job Offer
                         </Button></>
-    }
+                }
+                {
+                    this.state.job.map(element => {
+                        return (
+                            <div>
+
+
+                                <section class="light">
+                                    <div class="container py-2">
+                                        <div class="h1 text-center " id="pageHeaderTitle">Job Post</div>
+
+                                        <article class="postcard light ">
+                                            <a class="postcard__img_link" href="#">
+                                                <img class="postcard__img" src={JobPost} alt="Image Title" />
+                                            </a>
+                                            <div class="postcard__text ">
+                                                <h1 class="postcard__title">{element.name}</h1>
+
+                                                <div class="postcard__bar"></div>
+                                                <h6><p>{element.category}</p></h6>
+
+
+                                                <div class="postcard__preview-txt"><p>{element.description}</p></div>
+
+                                                <div class="gridContent">
+                                                    <h6>Skills:</h6><p>{element.skills}</p>
+                                                    <h6>Tools:</h6><p>{element.tools}</p>
+                                                    <h6>Qualifications:</h6><p>{element.qualification}</p>
+
+                                                    <h6>Salary:</h6><p>{`${element.salary} JOD`}</p>
+
+
+                                                    <h6>Location:</h6><p>{element.location}</p>
+                                                    <h6>Phone:</h6><p>{element.phononumber}</p>
+                                                    <h6>Email:</h6><p>{element.email}</p>
+
+                                                </div>
+                                            </div>
+                                        </article>
+
+
+                                    </div>
+                                </section>
+                            </div>
+                        )
+                    })
+                }
+
+                
             </div>
         )
     }
