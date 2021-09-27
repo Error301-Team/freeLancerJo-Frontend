@@ -200,6 +200,7 @@ class Accountform extends Component {
                             {/* <div class="col-md-12"><label class="labels">Experience in Designing</label><input type="text" class="form-control" placeholder="experience"  /></div> <br />
                         <div class="col-md-12"><label class="labels">Additional Details</label><input type="text" class="form-control" placeholder="additional details"  /></div> */}
                         </div>
+
                     </div>
                 </form>
             </div >
