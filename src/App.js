@@ -25,13 +25,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // import {  } from 'react-bootstrap';
 class App extends Component {
 
-  constructor(props){
+
+  constructor(props) {
     super(props);
-    this.state={
-      data:[]
+    this.state = {
+      data: []
     }
   }
-  
+
   // componentDidMount = () =>{
   //   axios.get().then(res=>{
   //     this.setState({
