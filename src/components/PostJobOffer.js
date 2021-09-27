@@ -19,21 +19,6 @@ class PostJobOffer extends Component {
         }
     }
 
-    handleChange = e => {
-        let { name, description, email, category, location, skills, tools, qualification, salary, phononumber } = e.target.value
-        this.setState({
-            name: name,
-            description: description,
-            email: email,
-            category: category,
-            location: location,
-            skills: skills,
-            tools: tools,
-            qualification: qualification,
-            salary: salary,
-            phononumber: phononumber,
-        })
-    }
     submitHandle = async (e) => {
         e.preventDefault();
         let data = {
@@ -47,6 +32,7 @@ class PostJobOffer extends Component {
             qualification: this.state.qualification.split(','),
             salary: this.state.salary,
             phononumber: this.state.phononumber,
+            img: this.state.img
         }
         console.log(process.env.REACT_APP_BACKEND_API_KEY);
         let job = axios.post(`${process.env.REACT_APP_BACKEND_API_KEY}createJob`, data);
@@ -80,11 +66,12 @@ class PostJobOffer extends Component {
     }
 
     handleChangeCategory=(e)=>{
-        let category = e.target.value;
-        this.setState({
-            category:category,
+        let Category= e.target.value;
+        this.setstate({
+            Category:Category
         })
     }
+
 
     handleChangeLocation=(e)=>{
         let location = e.target.value;
@@ -134,6 +121,7 @@ class PostJobOffer extends Component {
             description:description,
         })
     }
+
 
     render() {
         return (
