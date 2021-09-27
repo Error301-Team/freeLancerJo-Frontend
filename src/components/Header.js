@@ -1,16 +1,16 @@
 import React, { Component } from 'react'
 import logo from "../assets/logoColor250px.png"
 import './header.css';
-import { Navbar, Container, Nav, Button, Col, DropdownButton, Dropdown, Row, NavItem } from 'react-bootstrap';
+import { Navbar, Container, Nav, Col,Row } from 'react-bootstrap';
 import { Link } from "react-router-dom"
 import axios from "axios";
 import { withAuth0 } from '@auth0/auth0-react';
 import LoginButton from './LoginButton';
+import Button from './Button';
 import LogoutButton from './LogoutButton';
 
-// import Button from './components/Button';
+
 class Header extends Component {
-   
 
     callApi = () => {
         if (this.props.auth0.isAuthenticated) {
@@ -66,13 +66,8 @@ class Header extends Component {
                                                 <img src={this.props.auth0.user.picture} alt="" /> */}
                                                 <Button callApi={this.callApi} />
                                             </> :
-                                            <LoginButton />
+                                            <LoginButton callApi={this.callApi} />
                                     }
-                                    {/* <Button variant="light">Login</Button>{' '} */}
-                                    {/* <Button variant="light">Sign Up</Button>{' '} */}
-                                    {/* <button onClick={this.state.callApi}>
-                                        call AUTH api
-                                    </button> */}
                                 </Col>
                             </Navbar>
                         </Row>
