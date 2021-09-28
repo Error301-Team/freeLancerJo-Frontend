@@ -18,7 +18,9 @@ class PostJobOffer extends Component {
             salary: '',
             phononumber: '',
             modalShow: false,
-            job: []
+            update:false,
+            job: [],
+            newJobsArray:[]
         }
     }
     submitHandle = async (e) => {
@@ -37,6 +39,11 @@ class PostJobOffer extends Component {
         }
         console.log(process.env.REACT_APP_BACKEND_API_KEY);
         let job = await axios.post(`${process.env.REACT_APP_BACKEND_API_KEY}/createJob`, data);
+        let result=job.data
+        this.setState({
+            update:true,
+            newJobsArray:result,
+        })
     }
 
     setModalShow = () => {
@@ -128,8 +135,6 @@ class PostJobOffer extends Component {
         let results = dbJobs.data
         this.setState({
             job: results
-
-
         })
 
     }
@@ -213,7 +218,7 @@ class PostJobOffer extends Component {
 
                     </>
                 }
-            <PJobOffers job={this.state.job}/>
+            {this.state.update?<PJobOffers job={this.state.newJobsArray}/>:  <PJobOffers job={this.state.job}/>}
 
             </div>
         )
