@@ -45,6 +45,7 @@ class Main extends Component {
             </> :
             <LoginButton callApi={this.callApi} />
         }
+         callApi={this.callApi}
         <img className="mainImage" src={mainImage} alt="" />
         {/* <Button
           className=" button1 "
