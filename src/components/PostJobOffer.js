@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Form, Button, Modal, Card } from 'react-bootstrap';
 import './JobPosts.css';
 import PJobOffers from './PJobOffers';
+import { withAuth0 } from '@auth0/auth0-react'
 class PostJobOffer extends Component {
     constructor(props) {
         super(props);
@@ -28,7 +29,7 @@ class PostJobOffer extends Component {
         let data = {
             name: this.state.name,
             description: this.state.description,
-            email: this.state.email,
+            email: this.props.auth0.user.email,
             category: this.state.category,
             location: this.state.location,
             skills: this.state.skills.split(','),
@@ -62,14 +63,6 @@ class PostJobOffer extends Component {
         let name = e.target.value;
         this.setState({
             name: name,
-        })
-    }
-
-
-    handleChangeEmail = (e) => {
-        let email = e.target.value;
-        this.setState({
-            email: email,
         })
     }
 
@@ -172,10 +165,10 @@ class PostJobOffer extends Component {
                             <Modal.Body>
                                 <Form.Control onChange={this.handleChangeJobName} type="text" placeholder="Job Name" />
                                 <br />
-                                <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                                {/* <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                                     <Form.Label>Email address</Form.Label>
                                     <Form.Control onChange={this.handleChangeEmail} type="email" placeholder="name@example.com" />
-                                </Form.Group>
+                                </Form.Group> */}
                                 <br />
                                 <Form.Select onChange={this.handleChangeCategory} aria-label="Default select example">
                                     <option>Select a Category</option>
@@ -225,4 +218,4 @@ class PostJobOffer extends Component {
     }
 }
 
-export default PostJobOffer
+export default withAuth0(PostJobOffer);
