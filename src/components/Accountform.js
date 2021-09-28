@@ -9,10 +9,10 @@ class Accountform extends Component {
             firstname: '',
             surname: '',
             name: '',
-            phononumber: '',
+            phoneNumber: '',
             email: '',
             School: '',
-            jobdescription: '',
+            job_description: '',
             skills: "",
             lauguages: "",
             price: '',
@@ -36,10 +36,10 @@ class Accountform extends Component {
         let School= this.state.School
         let data = {
             name: `${this.state.firstname} ${this.state.surname}`,
-            phononumber: this.state.phononumber,
+            phoneNumber: this.state.phoneNumber,
             email: this.state.email,
             img: this.state.img,
-            jobdescription: this.state.jobdescription,
+            job_describtion: this.state.job_describtion,
             skills: this.state.skills.split(','),
             lauguages: this.state.lauguages.split(','),
             price: this.state.price,
@@ -64,10 +64,10 @@ class Accountform extends Component {
         })
     }
 
-    handleChangephononumber = (e) => {
-        let phononumber = e.target.value;
+    handleChangephoneNumber = (e) => {
+        let phoneNumber = e.target.value;
         this.setState({
-            phononumber: phononumber
+            phoneNumber: phoneNumber
         })
     }
 
@@ -85,11 +85,12 @@ class Accountform extends Component {
         })
     }
 
-    handleChangejobdescription = (e) => {
-        let jobdescription = e.target.value;
+    handleChangejob_describtion = (e) => {
+        let job_describtion = e.target.value;
         this.setState({
-            jobdescription: jobdescription
+            job_describtion: job_describtion
         })
+        console.log(job_describtion);
     }
 
     handleChangeskills = (e) => {
@@ -179,7 +180,7 @@ class Accountform extends Component {
                                     <div class="col-md-6"><label class="labels">Surname</label><input onChange={this.handleChangesurname} type="text" class="form-control" placeholder="surname" /></div>
                                 </div>
                                 <div class="row mt-3">
-                                    <div class="col-md-12"><label class="labels">Phone</label><input onChange={this.handleChangephononumber} type="text" class="form-control" placeholder="enter phone number" /></div>
+                                    <div class="col-md-12"><label class="labels">Phone</label><input onChange={this.handleChangephoneNumber} type="text" class="form-control" placeholder="enter phone number" /></div>
                                     <div class="col-md-12"><label class="labels">Email ID</label><input onChange={this.handleChangeemail} type="text" class="form-control" placeholder="example@email.com" /></div>
                                 </div>
                                 <Form.Group as={Col} controlId="formGrid Experience">
@@ -192,7 +193,7 @@ class Accountform extends Component {
                                 </Form.Group>
                                 <Form.Group as={Col} controlId="formGrid Experience">
                                     <Form.Label > Job Description</Form.Label>
-                                    <Form.Select onChange={this.handleChangejobdescription} defaultValue="Choose...">
+                                    <Form.Select onChange={this.handleChangejob_describtion} defaultValue="Choose...">
                                         <option>Architecture</option>
                                         <option>Designer</option>
                                         <option> Photography</option>
