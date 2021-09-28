@@ -53,20 +53,17 @@ class Logintype extends Component {
         this.setState({
             redirectBtn: e.target.value,
         });
-        console.log(this.state.redirectBtn)
     }
     onChangeFreeLancerProfile=(e)=>{
         this.setState({
             redirectBtn: e.target.value,
         });
-        console.log(this.state.redirectBtn)
     }
     onSubmitForm =()=>{
         this.setState({
             redirectTo:true,
         });
     }
-
 
     render() {
         if (this.state.redirect){

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import OurMission from "../assets/OurMission.jpg";
+import Spinner from './Spinner';
 import {
    Card
 } from 'react-bootstrap';
@@ -11,7 +12,8 @@ export class Ourmission extends Component {
     render() {
         return (
 
-            
+ <>
+                <Spinner />            
             <div style={{ backgroundColor: 'white' }}>
                 <div class="container-fluid rounded" >
                     <div class="row px-5" >
@@ -48,7 +50,7 @@ export class Ourmission extends Component {
                 </div>
      
 
-
+</>
         )
     }
 }

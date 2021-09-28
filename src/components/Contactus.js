@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import './Contactus.css'
 import ContactUs from "../assets/ContactUs.jpg";
-
+import Spinner from './Spinner';
 class Contactus extends Component {
     render() {
         return (
+            <>
+            <Spinner/>
             <div style={{ backgroundColor: 'white' }}>
                 <div class="container-fluid rounded" >
                     <div className="p">
@@ -43,6 +45,7 @@ class Contactus extends Component {
                     </div>
                 </div>
             </div>
+            </>
         )
     }
 }
