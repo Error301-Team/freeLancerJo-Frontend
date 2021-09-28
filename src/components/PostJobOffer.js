@@ -140,7 +140,7 @@ class PostJobOffer extends Component {
 
 
                     <Card className="text-center" >
-                        <Card.Header ><h3> Current Job Post</h3> </Card.Header>
+                        <Card.Header ><h1> Current Job Posts</h1> </Card.Header>
                         <Card.Body>
 
                             <Button onClick={this.setModalShow} variant="warning">Add New Job Offer</Button>
