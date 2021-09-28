@@ -165,7 +165,7 @@ class PostJobOffer extends Component {
                             <Modal.Body>
                                 <Form.Control onChange={this.handleChangeJobName} type="text" placeholder="Job Name" />
                                 <br />
-                                {/* <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                                 {/* <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                                     <Form.Label>Email address</Form.Label>
                                     <Form.Control onChange={this.handleChangeEmail} type="email" placeholder="name@example.com" />
                                 </Form.Group> */}
