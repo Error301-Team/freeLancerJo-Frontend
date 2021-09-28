@@ -71,7 +71,6 @@ class Jobcategories extends Component {
       salary: this.state.salary,
       phononumber: this.state.phononumber,
     }
-    console.log(process.env.REACT_APP_BACKEND_API_KEY);
     let job = await axios.post(`${process.env.REACT_APP_BACKEND_API_KEY}/createJob`, data);
     let result = job.data;
     let results = result.filter(Element => Element.category == this.state.search);
@@ -142,99 +141,106 @@ class Jobcategories extends Component {
       description: description,
     })
   }
-
+back=()=>{
+  this.setState({
+    showFilteredJobs:false
+  })
+}
   render() {
     return (
-      <>
-        <div style={{ marginTop: '124px' }}>
-        {this.state.showFilteredJobs && <Spinner />}
-          {
-            this.state.showFilteredJobs ? <>
-              {!(this.state.modalShow) &&
-                <Card className="text-center" >
-                  <Card.Header ><h3> Current Job Post</h3> </Card.Header>
-                  <Card.Body>
 
-                    <Button onClick={this.setModalShow} variant="warning">Add New Job Offer</Button>
-                  </Card.Body>
 
-                </Card>
-              }
-              {this.state.modalShow &&
-                <><Modal.Dialog
-                  size="lg"
-                  aria-labelledby="contained-modal-title-vcenter"
-                  centered
-                >
-                  <Modal.Header>
-                    <Modal.Title>Job Offer:</Modal.Title>
-                  </Modal.Header>
+      <div style={{ marginTop: '124px' }}>
+       {this.state.showFilteredJobs && <Spinner />}
+        {
+          this.state.showFilteredJobs ? <>
+            {!(this.state.modalShow) &&
 
-                  <Form onSubmit={this.submitHandle}>
-                    <Modal.Body>
-                      <Form.Control onChange={this.handleChangeJobName} type="text" placeholder="Job Name" />
-                      <br />
-                      {/* <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+
+              <Card className="text-center" >
+                <Card.Header ><h3> Current Job Post</h3> </Card.Header>
+                <Card.Body>
+                <Button onClick={this.back} variant="warning">Back</Button>
+                  <Button onClick={this.setModalShow} variant="warning">Add New Job Offer</Button>
+                </Card.Body>
+
+              </Card>
+            }
+            {this.state.modalShow &&
+              <><Modal.Dialog
+                size="lg"
+                aria-labelledby="contained-modal-title-vcenter"
+                centered
+              >
+                <Modal.Header>
+                  <Modal.Title>Job Offer:</Modal.Title>
+                </Modal.Header>
+
+                <Form onSubmit={this.submitHandle}>
+                  <Modal.Body>
+                    <Form.Control onChange={this.handleChangeJobName} type="text" placeholder="Job Name" />
+                    <br />
+                    {/* <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                               <Form.Label>Email address</Form.Label>
                               <Form.Control onChange={this.handleChangeEmail} type="email" placeholder="name@example.com" />
                           </Form.Group> */}
-                      <br />
-                      <Form.Select onChange={this.handleChangeCategory} aria-label="Default select example">
-                        <option>Select a Category</option>
-                        <option value="Architect">Architect</option>
-                        <option value="Software Develope">Software Develope</option>
-                        <option value="Design">Design</option>
-                        <option value="Photographer">Photographer</option>
-                      </Form.Select>
-                      <br />
-                      <Form.Control onChange={this.handleChangeLocation} type="text" placeholder="Location" />
-                      <br />
-                      <Form.Control onChange={this.handleChangePhone} type="text" placeholder="Phone Number" />
-                      <br />
-                      <Form.Control onChange={this.handleChangeskills} type="text" placeholder="skills: ex (creative, teamleader, Fast Learner)" />
-                      <br />
-                      <Form.Control onChange={this.handleChangeTools} type="text" placeholder="Tools: ex (Photoshop, Adope XD, Illustrator)" />
-                      <br />
-                      <Form.Control onChange={this.handleChangeQualification} type="text" placeholder="Qualification: (Education level, desired Experience)" />
-                      <br />
-                      <Form.Control onChange={this.handleChangeSalary} type="text" placeholder="Salary: (Expected Salary)" />
-                      <br />
-                      <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                        <Form.Label>Job Description</Form.Label>
-                        <Form.Control onChange={this.handleChangeDescription} as="textarea" rows={3} />
-                      </Form.Group>
-                    </Modal.Body>
+                    <br />
+                    <Form.Select onChange={this.handleChangeCategory} aria-label="Default select example">
+                      <option>Select a Category</option>
+                      <option value="Architect">Architect</option>
+                      <option value="Software Develope">Software Develope</option>
+                      <option value="Design">Design</option>
+                      <option value="Photographer">Photographer</option>
+                    </Form.Select>
+                    <br />
+                    <Form.Control onChange={this.handleChangeLocation} type="text" placeholder="Location" />
+                    <br />
+                    <Form.Control onChange={this.handleChangePhone} type="text" placeholder="Phone Number" />
+                    <br />
+                    <Form.Control onChange={this.handleChangeskills} type="text" placeholder="skills: ex (creative, teamleader, Fast Learner)" />
+                    <br />
+                    <Form.Control onChange={this.handleChangeTools} type="text" placeholder="Tools: ex (Photoshop, Adope XD, Illustrator)" />
+                    <br />
+                    <Form.Control onChange={this.handleChangeQualification} type="text" placeholder="Qualification: (Education level, desired Experience)" />
+                    <br />
+                    <Form.Control onChange={this.handleChangeSalary} type="text" placeholder="Salary: (Expected Salary)" />
+                    <br />
+                    <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                      <Form.Label>Job Description</Form.Label>
+                      <Form.Control onChange={this.handleChangeDescription} as="textarea" rows={3} />
+                    </Form.Group>
+                  </Modal.Body>
 
-                    <Modal.Footer>
-                      <Button class="cancelBtn" onClick={this.onHide} variant="secondary">Cancel</Button>
-                      <Button class="submitBtn" variant="" style={{ backgroundColor: '#ffc107' }} type="submit">
-                        Submit
-                      </Button>
+                  <Modal.Footer>
+                    <Button class="cancelBtn" onClick={this.onHide} variant="secondary">Cancel</Button>
+                    <Button class="submitBtn" variant="" style={{ backgroundColor: '#ffc107' }} type="submit">
+                      Submit
+                    </Button>
 
-                      <Button class="createBtn" variant="" style={{ backgroundColor: '#ffc107' }} onClick={this.setModalShow}>
-                        Create a New Job Offer
-                      </Button>
-                    </Modal.Footer>
-                  </Form>
-                </Modal.Dialog>
+                    <Button class="createBtn" variant="" style={{ backgroundColor: '#ffc107' }} onClick={this.setModalShow}>
+                      Create a New Job Offer
+                    </Button>
+                  </Modal.Footer>
+                </Form>
+              </Modal.Dialog>
 
-                </>
-              }
-              {this.state.update ? <PJobOffers job={this.state.newJobsArray} /> : <PJobOffers job={this.state.job} />}
-              
-            </>
-
-
-              :
-
-              <><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" /><div class="container">
-                <div class="row justify-content-center">
-                  <div class="col-12 col-sm-8 col-lg-6">
-                    <div class="section_heading text-center wow fadeInUp" data-wow-delay="0.2s" style={{ visibility: 'visible', animationDelay: '0.2s', animationName: 'fadeInUp' }}>
+              </>
+            }
+           {this.state.update?<PJobOffers job={this.state.newJobsArray} search={this.state.search}/>:<PJobOffers job={this.state.job} search={this.state.search}/>}
+           
+          </>
 
 
-                      <div class="line"></div>
-                    </div>
+            :
+
+            <><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" /><div class="container">
+              <div class="row justify-content-center">
+                <div class="col-12 col-sm-8 col-lg-6">
+                  <div class="section_heading text-center wow fadeInUp" data-wow-delay="0.2s" style={{ visibility: 'visible', animationDelay: '0.2s', animationName: 'fadeInUp' }}>
+
+
+                    <div class="line"></div>
+
                   </div>
                 </div>
 
@@ -280,11 +286,12 @@ class Jobcategories extends Component {
                     </div>
                   </div>
                 </div>
-              </div></>
-          }
 
-        </div>
-      </>
+              </div>
+            </div></>
+        }
+      </div>
+
     )
   }
 
