@@ -3,6 +3,7 @@ import Architecture from "../assets/Architecture.jpg";
 import Designer from "../assets/Designer.jpg";
 import Photography from "../assets/Photography.jpg";
 import SoftwareDeveloper from "../assets/SoftwareDeveloper.jpg";
+import Spinner from './Spinner';
 import { Card, Button, Row, Col, Form, Modal } from 'react-bootstrap';
 import './Jobcategories.css';
 import axios from 'axios';
@@ -31,10 +32,7 @@ class Jobcategories extends Component {
       newJobsArray: [],
     }
   }
-  filterArray = (arr) => {
-
-
-  }
+  
   filter = async (e) => {
     let search = e.target.innerText;
     this.setState({
@@ -147,146 +145,146 @@ class Jobcategories extends Component {
 
   render() {
     return (
+      <>
+        <div style={{ marginTop: '124px' }}>
+        {this.state.showFilteredJobs && <Spinner />}
+          {
+            this.state.showFilteredJobs ? <>
+              {!(this.state.modalShow) &&
+                <Card className="text-center" >
+                  <Card.Header ><h3> Current Job Post</h3> </Card.Header>
+                  <Card.Body>
 
-      <div style={{ marginTop: '124px' }}>
-        {
-          this.state.showFilteredJobs ? <>
-            {!(this.state.modalShow) &&
+                    <Button onClick={this.setModalShow} variant="warning">Add New Job Offer</Button>
+                  </Card.Body>
 
+                </Card>
+              }
+              {this.state.modalShow &&
+                <><Modal.Dialog
+                  size="lg"
+                  aria-labelledby="contained-modal-title-vcenter"
+                  centered
+                >
+                  <Modal.Header>
+                    <Modal.Title>Job Offer:</Modal.Title>
+                  </Modal.Header>
 
-              <Card className="text-center" >
-                <Card.Header ><h3> Current Job Post</h3> </Card.Header>
-                <Card.Body>
-
-                  <Button onClick={this.setModalShow} variant="warning">Add New Job Offer</Button>
-                </Card.Body>
-
-              </Card>
-            }
-            {this.state.modalShow &&
-              <><Modal.Dialog
-                size="lg"
-                aria-labelledby="contained-modal-title-vcenter"
-                centered
-              >
-                <Modal.Header>
-                  <Modal.Title>Job Offer:</Modal.Title>
-                </Modal.Header>
-
-                <Form onSubmit={this.submitHandle}>
-                  <Modal.Body>
-                    <Form.Control onChange={this.handleChangeJobName} type="text" placeholder="Job Name" />
-                    <br />
-                    {/* <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                  <Form onSubmit={this.submitHandle}>
+                    <Modal.Body>
+                      <Form.Control onChange={this.handleChangeJobName} type="text" placeholder="Job Name" />
+                      <br />
+                      {/* <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                               <Form.Label>Email address</Form.Label>
                               <Form.Control onChange={this.handleChangeEmail} type="email" placeholder="name@example.com" />
                           </Form.Group> */}
-                    <br />
-                    <Form.Select onChange={this.handleChangeCategory} aria-label="Default select example">
-                      <option>Select a Category</option>
-                      <option value="Architect">Architect</option>
-                      <option value="Software Develope">Software Develope</option>
-                      <option value="Design">Design</option>
-                      <option value="Photographer">Photographer</option>
-                    </Form.Select>
-                    <br />
-                    <Form.Control onChange={this.handleChangeLocation} type="text" placeholder="Location" />
-                    <br />
-                    <Form.Control onChange={this.handleChangePhone} type="text" placeholder="Phone Number" />
-                    <br />
-                    <Form.Control onChange={this.handleChangeskills} type="text" placeholder="skills: ex (creative, teamleader, Fast Learner)" />
-                    <br />
-                    <Form.Control onChange={this.handleChangeTools} type="text" placeholder="Tools: ex (Photoshop, Adope XD, Illustrator)" />
-                    <br />
-                    <Form.Control onChange={this.handleChangeQualification} type="text" placeholder="Qualification: (Education level, desired Experience)" />
-                    <br />
-                    <Form.Control onChange={this.handleChangeSalary} type="text" placeholder="Salary: (Expected Salary)" />
-                    <br />
-                    <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                      <Form.Label>Job Description</Form.Label>
-                      <Form.Control onChange={this.handleChangeDescription} as="textarea" rows={3} />
-                    </Form.Group>
-                  </Modal.Body>
+                      <br />
+                      <Form.Select onChange={this.handleChangeCategory} aria-label="Default select example">
+                        <option>Select a Category</option>
+                        <option value="Architect">Architect</option>
+                        <option value="Software Develope">Software Develope</option>
+                        <option value="Design">Design</option>
+                        <option value="Photographer">Photographer</option>
+                      </Form.Select>
+                      <br />
+                      <Form.Control onChange={this.handleChangeLocation} type="text" placeholder="Location" />
+                      <br />
+                      <Form.Control onChange={this.handleChangePhone} type="text" placeholder="Phone Number" />
+                      <br />
+                      <Form.Control onChange={this.handleChangeskills} type="text" placeholder="skills: ex (creative, teamleader, Fast Learner)" />
+                      <br />
+                      <Form.Control onChange={this.handleChangeTools} type="text" placeholder="Tools: ex (Photoshop, Adope XD, Illustrator)" />
+                      <br />
+                      <Form.Control onChange={this.handleChangeQualification} type="text" placeholder="Qualification: (Education level, desired Experience)" />
+                      <br />
+                      <Form.Control onChange={this.handleChangeSalary} type="text" placeholder="Salary: (Expected Salary)" />
+                      <br />
+                      <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                        <Form.Label>Job Description</Form.Label>
+                        <Form.Control onChange={this.handleChangeDescription} as="textarea" rows={3} />
+                      </Form.Group>
+                    </Modal.Body>
 
-                  <Modal.Footer>
-                    <Button class="cancelBtn" onClick={this.onHide} variant="secondary">Cancel</Button>
-                    <Button class="submitBtn" variant="" style={{ backgroundColor: '#ffc107' }} type="submit">
-                      Submit
-                    </Button>
+                    <Modal.Footer>
+                      <Button class="cancelBtn" onClick={this.onHide} variant="secondary">Cancel</Button>
+                      <Button class="submitBtn" variant="" style={{ backgroundColor: '#ffc107' }} type="submit">
+                        Submit
+                      </Button>
 
-                    <Button class="createBtn" variant="" style={{ backgroundColor: '#ffc107' }} onClick={this.setModalShow}>
-                      Create a New Job Offer
-                    </Button>
-                  </Modal.Footer>
-                </Form>
-              </Modal.Dialog>
+                      <Button class="createBtn" variant="" style={{ backgroundColor: '#ffc107' }} onClick={this.setModalShow}>
+                        Create a New Job Offer
+                      </Button>
+                    </Modal.Footer>
+                  </Form>
+                </Modal.Dialog>
 
-              </>
-            }
-           {this.state.update?<PJobOffers job={this.state.newJobsArray}/>:<PJobOffers job={this.state.job} />}
-           
-          </>
-
-
-            :
-
-            <><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" /><div class="container">
-              <div class="row justify-content-center">
-                <div class="col-12 col-sm-8 col-lg-6">
-                  <div class="section_heading text-center wow fadeInUp" data-wow-delay="0.2s" style={{ visibility: 'visible', animationDelay: '0.2s', animationName: 'fadeInUp' }}>
+                </>
+              }
+              {this.state.update ? <PJobOffers job={this.state.newJobsArray} /> : <PJobOffers job={this.state.job} />}
+              
+            </>
 
 
-                    <div class="line"></div>
-                  </div>
-                </div>
-              </div>
+              :
 
-              <div class="row">
-                <div class="col-12 col-sm-6 col-lg-3">
-                  <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.2s" style={{ visibility: 'visible', animationDelay: '0.2s', animationName: 'fadeInUp' }}>
-                    <div class="advisor_thumb"><img src={Architecture} alt="" />
-                    </div>
-                    <div class="single_advisor_details_info">
+              <><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" /><div class="container">
+                <div class="row justify-content-center">
+                  <div class="col-12 col-sm-8 col-lg-6">
+                    <div class="section_heading text-center wow fadeInUp" data-wow-delay="0.2s" style={{ visibility: 'visible', animationDelay: '0.2s', animationName: 'fadeInUp' }}>
 
-                      <p class="designation" value="Architecture" onClick={e => this.filter(e)}>Architect</p>
+
+                      <div class="line"></div>
                     </div>
                   </div>
                 </div>
-                <div class="col-12 col-sm-6 col-lg-3">
-                  <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.3s" value="Designer" style={{ visibility: 'visible', animationDelay: '0.2s', animationName: 'fadeInUp' }}>
-                    <div class="advisor_thumb"><img src={Designer} alt="" />
-                    </div>
-                    <div class="single_advisor_details_info">
 
-                      <p class="designation" onClick={e => this.filter(e)}>Design</p>
+                <div class="row">
+                  <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.2s" style={{ visibility: 'visible', animationDelay: '0.2s', animationName: 'fadeInUp' }}>
+                      <div class="advisor_thumb"><img src={Architecture} alt="" />
+                      </div>
+                      <div class="single_advisor_details_info">
+
+                        <p class="designation" value="Architecture" onClick={e => this.filter(e)}>Architect</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.3s" value="Designer" style={{ visibility: 'visible', animationDelay: '0.2s', animationName: 'fadeInUp' }}>
+                      <div class="advisor_thumb"><img src={Designer} alt="" />
+                      </div>
+                      <div class="single_advisor_details_info">
+
+                        <p class="designation" onClick={e => this.filter(e)}>Design</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.4s" value="Photography" style={{ visibility: 'visible', animationDelay: '0.2s', animationName: 'fadeInUp' }}>
+                      <div class="advisor_thumb"><img src={Photography} alt="" />
+                      </div>
+                      <div class="single_advisor_details_info">
+                        
+                        <p class="designation" onClick={(e)=>(this.filter(e) )}>Photographer</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.5s" value="Software Development" style={{ visibility: 'visible', animationDelay: '0.2s', animationName: 'fadeInUp' }}>
+                      <div class="advisor_thumb"><img src={SoftwareDeveloper} alt="" />
+                      </div>
+                      <div class="single_advisor_details_info">
+
+                        <p class="designation" onClick={e => this.filter(e)}>Software Developer</p>
+                      </div>
                     </div>
                   </div>
                 </div>
-                <div class="col-12 col-sm-6 col-lg-3">
-                  <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.4s" value="Photography" style={{ visibility: 'visible', animationDelay: '0.2s', animationName: 'fadeInUp' }}>
-                    <div class="advisor_thumb"><img src={Photography} alt="" />
-                    </div>
-                    <div class="single_advisor_details_info">
+              </div></>
+          }
 
-                      <p class="designation" onClick={e => this.filter(e)}>Photographer</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12 col-sm-6 col-lg-3">
-                  <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.5s" value="Software Development" style={{ visibility: 'visible', animationDelay: '0.2s', animationName: 'fadeInUp' }}>
-                    <div class="advisor_thumb"><img src={SoftwareDeveloper} alt="" />
-                    </div>
-                    <div class="single_advisor_details_info">
-
-                      <p class="designation" onClick={e => this.filter(e)}>Software Developer</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div></>
-        }
-
-      </div>
+        </div>
+      </>
     )
   }
 

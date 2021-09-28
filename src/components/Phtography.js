@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './Phtography.css'
 import axios from 'axios';
+import Spinner from './Spinner';
 import {
     Row,
     Col,
@@ -41,110 +42,111 @@ class Phtography extends Component {
     }
     filterArray = (arr) => {
         if (this.state.showFilteredUsers === false) {
-          return arr;
+            return arr;
         }
         else if (this.state.search !== this.state.saver && this.state.saver !== "all") {
-          return arr.filter(Element => {
-            return Element.job_describtion === (this.state.saver);
-          })
+            return arr.filter(Element => {
+                return Element.job_describtion === (this.state.saver);
+            })
         }
         else if (this.state.search === "all") {
-          this.setState({
-            showFilteredUsers: false,
-            saver: this.state.search,
-          })
-          return arr;
+            this.setState({
+                showFilteredUsers: false,
+                saver: this.state.search,
+            })
+            return arr;
         }
         else if (this.state.search == "") {
-          this.setState({
-            showFilteredUsers: false,
-            saver: "all",
-          })
-          return arr;
+            this.setState({
+                showFilteredUsers: false,
+                saver: "all",
+            })
+            return arr;
         }
         else if (this.state.showFilteredUsers === true) {
-          return arr.filter(Element => {
-            return Element.job_describtion === (this.state.search);
-          })
-    
+            return arr.filter(Element => {
+                return Element.job_describtion === (this.state.search);
+            })
+
         }
-      }
+    }
 
-render() {
-    return (
-        <><h1 class="h1FreeLancer">Our FreeLancers</h1>  
-        
-        <h5>Filter by the field of work</h5>
-        <form class="formOption" onSubmit={this.handleSubmit} >
-                <Col md className="DropDownMenu">
-                    <FloatingLabel controlId="floatingSelect" label="">
-                        <Form.Select onChange={(e) => { this.handleSelect(e) }} className="bg-white  py-3" >
-                            <option value={"all"}>Category :</option>
-                            <option value={"Architecture"}>Architecture </option>
-                            <option value={"Designer"}>Designer </option>
-                            <option value={"Photography"}>Photography </option>
-                            <option value={"Software Development"}>Software Development </option>
-                        </Form.Select>
-                    </FloatingLabel>
-                </Col>
-                <div class="buttonOption">
-                <Button variant="warning" as="input" type="submit" value="Click Me To Filter" />{' '}
-                </div>
-            </form>
-        
-        
-        
-          <div className="gridCards">
-
-        
-    
-
-           
-            {console.log(this.filterArray(this.state.users))}
-            {this.filterArray(this.state.users).map(Element => {
-
-
-                return (
-
-
-
-                    <div>
-
-                        <div class="image-flip">
-                            <div class="mainflip flip-0">
-                                <div class="frontside">
-                                    <div class="card">
-                                        <div class="card-body text-center" style={{ backgroundColor: 'white' }}>
-                                            <p><img class=" img-fluid" style={{ objectFit: 'cover' }} src={Element.img} alt="card image" /></p>
-                                            <h5 class="card-title">{Element.name}</h5>
-                                            <p class="card-text">{Element.job_describtion}</p>
-                                            <h6>Skills:</h6><p> {Element.skills}</p>
-                                            <h6>Rating:</h6><p> {Element.rating}</p>
-                                            <h6>Price Per/Hour:</h6><p> {Element.price}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="backside">
-                                    <div class="card">
-                                        <div class="card-body text-center mt-4">
-                                            <h6 class="card-title">Experience:</h6><p> {Element.experience}</p>
-                                            {/* <h6 class="card-title">Education : "{Element.Education}"</h6> */}
-                                            <h6 class="card-title">Languages:</h6><p> {Element.lauguages}</p>
-                                            <h6 class="card-title">Location:</h6><p> {Element.location}</p>
-                                            <h6 class="card-title">Phone:</h6><p> {Element.phoneNumber}</p>
-                                            <h6 class="card-title">Email:</h6><p> {Element.email}</p>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
+    render() {
+        return (
+            <>
+                <Spinner />
+                <h1 class="h1FreeLancer">Our FreeLancers</h1>
+                <h5>Filter by the field of work</h5>
+                <form class="formOption" onSubmit={this.handleSubmit} >
+                    <Col md className="DropDownMenu">
+                        <FloatingLabel controlId="floatingSelect" label="">
+                            <Form.Select onChange={(e) => { this.handleSelect(e) }} className="bg-white  py-3" >
+                                <option value={"all"}>Category :</option>
+                                <option value={"Architecture"}>Architecture </option>
+                                <option value={"Designer"}>Designer </option>
+                                <option value={"Photography"}>Photography </option>
+                                <option value={"Software Development"}>Software Development </option>
+                            </Form.Select>
+                        </FloatingLabel>
+                    </Col>
+                    <div class="buttonOption">
+                        <Button variant="warning" as="input" type="submit" value="Click Me To Filter" />{' '}
                     </div>
-                );
-            })}
-        </div></>
-    )
-}
+                </form>
+
+
+
+                <div className="gridCards">
+
+
+
+
+
+                    {console.log(this.filterArray(this.state.users))}
+                    {this.filterArray(this.state.users).map(Element => {
+
+
+                        return (
+
+
+
+                            <div>
+
+                                <div class="image-flip">
+                                    <div class="mainflip flip-0">
+                                        <div class="frontside">
+                                            <div class="card">
+                                                <div class="card-body text-center" style={{ backgroundColor: 'white' }}>
+                                                    <p><img class=" img-fluid" style={{ objectFit: 'cover' }} src={Element.img} alt="card image" /></p>
+                                                    <h5 class="card-title">{Element.name}</h5>
+                                                    <p class="card-text">{Element.job_describtion}</p>
+                                                    <h6>Skills:</h6><p> {Element.skills}</p>
+                                                    <h6>Rating:</h6><p> {Element.rating}</p>
+                                                    <h6>Price Per/Hour:</h6><p> {Element.price}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="backside">
+                                            <div class="card">
+                                                <div class="card-body text-center mt-4">
+                                                    <h6 class="card-title">Experience:</h6><p> {Element.experience}</p>
+                                                    {/* <h6 class="card-title">Education : "{Element.Education}"</h6> */}
+                                                    <h6 class="card-title">Languages:</h6><p> {Element.lauguages}</p>
+                                                    <h6 class="card-title">Location:</h6><p> {Element.location}</p>
+                                                    <h6 class="card-title">Phone:</h6><p> {Element.phoneNumber}</p>
+                                                    <h6 class="card-title">Email:</h6><p> {Element.email}</p>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        );
+                    })}
+                </div></>
+        )
+    }
 }
 export default Phtography
