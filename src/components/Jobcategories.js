@@ -73,7 +73,6 @@ class Jobcategories extends Component {
       salary: this.state.salary,
       phononumber: this.state.phononumber,
     }
-    console.log(process.env.REACT_APP_BACKEND_API_KEY);
     let job = await axios.post(`${process.env.REACT_APP_BACKEND_API_KEY}/createJob`, data);
     let result = job.data;
     let results = result.filter(Element => Element.category == this.state.search);
@@ -223,7 +222,7 @@ class Jobcategories extends Component {
 
               </>
             }
-           {this.state.update?<PJobOffers job={this.state.newJobsArray}/>:<PJobOffers job={this.state.job} />}
+           {this.state.update?<PJobOffers job={this.state.newJobsArray} search={this.state.search}/>:<PJobOffers job={this.state.job} search={this.state.search}/>}
            
           </>
 
@@ -285,7 +284,6 @@ class Jobcategories extends Component {
               </div>
             </div></>
         }
-
       </div>
     )
   }
