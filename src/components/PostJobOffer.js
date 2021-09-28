@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-// import { Form, Button, Modal, Card } from 'react-bootstrap';
+import { Form, Button, Modal, Card } from 'react-bootstrap';
 import './JobPosts.css';
 import PJobOffers from './PJobOffers';
-
+import { withAuth0 } from '@auth0/auth0-react'
 class PostJobOffer extends Component {
     constructor(props) {
         super(props);
@@ -63,14 +63,6 @@ class PostJobOffer extends Component {
         let name = e.target.value;
         this.setState({
             name: name,
-        })
-    }
-
-
-    handleChangeEmail = (e) => {
-        let email = e.target.value;
-        this.setState({
-            email: email,
         })
     }
 
@@ -173,7 +165,7 @@ class PostJobOffer extends Component {
                             <Modal.Body>
                                 <Form.Control onChange={this.handleChangeJobName} type="text" placeholder="Job Name" />
                                 <br />
-                                <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                                {/* <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                                     <Form.Label>Email address</Form.Label>
                                     <Form.Control onChange={this.handleChangeEmail} type="email" placeholder="name@example.com" />
                                 </Form.Group>
@@ -226,4 +218,4 @@ class PostJobOffer extends Component {
     }
 }
 
-export default PostJobOffer
+export default withAuth0(PostJobOffer);
