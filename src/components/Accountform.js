@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { Form, Col, Button } from 'react-bootstrap'
 import axios from 'axios';
 import './Accountform.css'
+import { withAuth0 } from '@auth0/auth0-react';
+
 class Accountform extends Component {
     constructor(props) {
         super(props);
@@ -9,10 +11,10 @@ class Accountform extends Component {
             firstname: '',
             surname: '',
             name: '',
-            phononumber: '',
+            phoneNumber: '',
             email: '',
             School: '',
-            jobdescription: '',
+            job_description: '',
             skills: "",
             lauguages: "",
             price: '',
@@ -23,38 +25,38 @@ class Accountform extends Component {
             img: '',
             From: '',
             To: '',
-            Education:{School:"", AreaOfStudys:"",Degree:"",To:"",From:""},
-            usersList:[],
+            Education: { School: "", AreaOfStudys: "", Degree: "", To: "", From: "" },
+            usersList: [],
         }
     }
     submitHandle = async (e) => {
         e.preventDefault();
-        let AreaOfStudys=this.state.To;
-        let Degree=this.state.From;
-        let To=this.state.AreaOfStudys;
-        let From=this.state.AreaOfStudys;
-        let School= this.state.School
+        let AreaOfStudys = this.state.To;
+        let Degree = this.state.From;
+        let To = this.state.AreaOfStudys;
+        let From = this.state.AreaOfStudys;
+        let School = this.state.School
         let data = {
             name: `${this.state.firstname} ${this.state.surname}`,
-            phononumber: this.state.phononumber,
-            email: this.state.email,
+            phoneNumber: this.state.phoneNumber,
+            email: this.props.auth0.user.email,
             img: this.state.img,
-            jobdescription: this.state.jobdescription,
+            job_describtion: this.state.job_describtion,
             skills: this.state.skills.split(','),
             lauguages: this.state.lauguages.split(','),
             price: this.state.price,
             location: this.state.location,
             experience: this.state.experience,
-            Education:{AreaOfStudys:AreaOfStudys,Degree:Degree,From:From,To:To,School:School},
+            Education: { AreaOfStudys: AreaOfStudys, Degree: Degree, From: From, To: To, School: School },
             // madeBy:"Wasem",
             // accoutType:"freelacer",
             // auth0:"done",   
         }
         console.log(data);
-        let newUsersList=await axios.post(`${process.env.REACT_APP_BACKEND_URL}/createUser`, data);
+        let newUsersList = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/createUser`, data);
         console.log(newUsersList);
 
-
+        console.log(this.props.auth0.user.email);
     }
 
     handleChangesurname = (e) => {
@@ -64,19 +66,19 @@ class Accountform extends Component {
         })
     }
 
-    handleChangephononumber = (e) => {
-        let phononumber = e.target.value;
+    handleChangephoneNumber = (e) => {
+        let phoneNumber = e.target.value;
         this.setState({
-            phononumber: phononumber
+            phoneNumber: phoneNumber
         })
     }
 
-    handleChangeemail = (e) => {
-        let email = e.target.value;
-        this.setState({
-            email: email
-        })
-    }
+    // handleChangeemail = (e) => {
+    //     let email = e.target.value;
+    //     this.setState({
+    //         email: email
+    //     })
+    // }
 
     handleChangeSchool = (e) => {
         let School = e.target.value;
@@ -85,11 +87,12 @@ class Accountform extends Component {
         })
     }
 
-    handleChangejobdescription = (e) => {
-        let jobdescription = e.target.value;
+    handleChangejob_describtion = (e) => {
+        let job_describtion = e.target.value;
         this.setState({
-            jobdescription: jobdescription
+            job_describtion: job_describtion
         })
+        console.log(job_describtion);
     }
 
     handleChangeskills = (e) => {
@@ -179,8 +182,8 @@ class Accountform extends Component {
                                     <div class="col-md-6"><label class="labels">Surname</label><input onChange={this.handleChangesurname} type="text" class="form-control" placeholder="surname" /></div>
                                 </div>
                                 <div class="row mt-3">
-                                    <div class="col-md-12"><label class="labels">Phone</label><input onChange={this.handleChangephononumber} type="text" class="form-control" placeholder="enter phone number" /></div>
-                                    <div class="col-md-12"><label class="labels">Email ID</label><input onChange={this.handleChangeemail} type="text" class="form-control" placeholder="example@email.com" /></div>
+                                    <div class="col-md-12"><label class="labels">Phone</label><input onChange={this.handleChangephoneNumber} type="text" class="form-control" placeholder="enter phone number" /></div>
+                                    {/* <div class="col-md-12"><label class="labels">Email ID</label><input onChange={this.handleChangeemail} type="text" class="form-control" placeholder="example@email.com" /></div> */}
                                 </div>
                                 <Form.Group as={Col} controlId="formGrid Experience">
                                     <Form.Label > Experience</Form.Label>
@@ -192,17 +195,17 @@ class Accountform extends Component {
                                 </Form.Group>
                                 <Form.Group as={Col} controlId="formGrid Experience">
                                     <Form.Label > Job Description</Form.Label>
-                                    <Form.Select onChange={this.handleChangejobdescription} defaultValue="Choose...">
+                                    <Form.Select onChange={this.handleChangejob_describtion} defaultValue="Choose...">
                                         <option>Architecture</option>
                                         <option>Designer</option>
                                         <option> Photography</option>
                                         <option> Software Development</option>
                                     </Form.Select>
                                 </Form.Group>
-                               
+
                                 <div class="row mt-3">
 
-                                <div class="col-md-12"><label class="labels">Languages</label><input onChange={this.handleChangelauguages} type="text" class="form-control" placeholder="enter Languages: ex (English, Arabic, french)" required /></div>
+                                    <div class="col-md-12"><label class="labels">Languages</label><input onChange={this.handleChangelauguages} type="text" class="form-control" placeholder="enter Languages: ex (English, Arabic, french)" required /></div>
                                 </div>
                                 <br />
                                 <hr />
@@ -246,4 +249,4 @@ class Accountform extends Component {
 
 
 
-export default Accountform
+export default withAuth0(Accountform)

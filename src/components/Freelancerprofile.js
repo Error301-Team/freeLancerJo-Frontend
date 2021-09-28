@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { Form, Col } from 'react-bootstrap'
 import axios from 'axios';
 import './freelancerProfile.css'
+import { withAuth0 } from '@auth0/auth0-react';
+
 export class Freelancerprofile extends Component {
     constructor(props) {
         super(props);
@@ -10,17 +12,32 @@ export class Freelancerprofile extends Component {
 
         }
     }
+
     componentDidMount = async () => {
         let data = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/getUsers`)
 
         console.log(data);
-        let result = data.data.filter(user => user.email == 'ojeff.diniz6@roidirt.com')
+        let result = data.data.find(user => user.email == this.props.auth0.user.email)
         this.setState({
-            users: result[0]
-
+            users: result
         });
-        console.log(this.state.users);
+
+        // console.log(this.props.auth0.user.email);
     }
+    // componentDidMount = async () => {
+    //     console.log(this.props.auth0.user.email );
+
+    //     let data = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/auth`)
+
+    //     console.log(data);
+    //     let result = data.data.filter(user => user.email == (this.props.auth0.user.email))
+    //     console.log(result);
+    //     this.setState({
+    //         users: result[0]
+
+    //     });
+    //     console.log(this.state.users);
+    // }
 
     render() {
         return (
@@ -113,4 +130,4 @@ export class Freelancerprofile extends Component {
     }
 }
 
-export default Freelancerprofile
+export default withAuth0(Freelancerprofile)

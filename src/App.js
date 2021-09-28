@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import Header from './components/Header';
 import Main from './components/Main';
 import Footer from './components/Footer';
@@ -12,6 +11,7 @@ import Phtography from './components/Phtography';
 import Ourmission from './components/Ourmission';
 import Contactus from './components/Contactus';
 import PostJobOffer from './components/PostJobOffer';
+import Logintype from './components/Logintype';
 import {
   BrowserRouter as Router,
   Switch,
@@ -19,7 +19,7 @@ import {
   Link
 } from "react-router-dom";
 import axios from 'axios';
-// import { withAuth0 } from '@auth0/auth0-react'
+import { withAuth0 } from '@auth0/auth0-react'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 // import {  } from 'react-bootstrap';
@@ -90,7 +90,7 @@ class App extends Component {
               <Footer />
             </Route>
             <Route path="/freelancerprofile">
-              <Header />
+              <Header  />
               <div style={{ minHeight: "580px" }}>
                 <Freelancerprofile />
               </div>
@@ -114,6 +114,13 @@ class App extends Component {
               <Header />
               <div style={{ minHeight: "580px" }}>
                 <PostJobOffer />
+              </div>
+              <Footer />
+            </Route>
+            <Route path="/logintype">
+              <Header />
+              <div style={{ minHeight: "580px" }}>
+              <Logintype />
               </div>
               <Footer />
             </Route>
