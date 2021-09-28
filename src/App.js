@@ -89,7 +89,7 @@ class App extends Component {
               <Footer />
             </Route>
             <Route path="/freelancerprofile">
-              <Header />
+              <Header  />
               <div style={{ minHeight: "580px" }}>
                 <Freelancerprofile />
               </div>

@@ -5,24 +5,23 @@ import freeL from "../assets/freeL.jpg";
 import mainImage from "../assets/HOMEPAGE.jpg";
 
 class Main extends Component {
-    render() {
+  
+  render() {
+    return (
+      <div className="mainDiv">
+        <img className="mainImage" src={mainImage} alt="" />
 
 
-        return (
-            <div className="mainDiv">
-              <img className="mainImage" src={mainImage} alt="" />
-
-
-              <Button
-                         className=" button1 "
-style={{backgroundColor:'#ffc107bf'}}
-                          href=""
-                          onClick={e => e.preventDefault()}
-                          // size="lg"
-                        >
-                     Join Us
-                        </Button>
-                {/* <Container>
+        <Button
+          className=" button1 "
+          style={{ backgroundColor: '#ffc107bf' }}
+          href=""
+          onClick={e => e.preventDefault()}
+        // size="lg"
+        >
+          Join Us
+        </Button>
+        {/* <Container>
               <Card className="">
        
                   <Row className="justify-content-center">
@@ -76,13 +75,13 @@ style={{backgroundColor:'#ffc107bf'}}
            
               </Card>
             </Container> */}
-     
-            </div>
+
+      </div>
 
 
 
-        )
-    }
+    )
+  }
 }
 
 export default Main

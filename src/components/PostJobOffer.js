@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Form, Button, Modal,Card } from 'react-bootstrap';
+import { Form, Button, Modal, Card } from 'react-bootstrap';
 import JobPost from "../assets/JobPost.png";
 import './JobPosts.css';
 class PostJobOffer extends Component {
@@ -21,7 +21,7 @@ class PostJobOffer extends Component {
             job: []
         }
     }
-   
+
 
     handleChange = e => {
         let { name, description, email, category, location, skills, tools, qualification, salary, phononumber } = e.target.value
@@ -53,11 +53,10 @@ class PostJobOffer extends Component {
             phononumber: this.state.phononumber,
         }
         console.log(process.env.REACT_APP_BACKEND_API_KEY);
-        let job = axios.post(`${process.env.REACT_APP_BACKEND_API_KEY}createJob`, data);
-       
-        
-    }
+        let job = axios.post(`${process.env.REACT_APP_BACKEND_API_KEY}/createJob`, data);
+        console.log(job);
 
+    }
     setModalShow = () => {
         this.setState({
             modalShow: true,
@@ -141,33 +140,33 @@ class PostJobOffer extends Component {
         })
     }
     componentDidMount = async () => {
-       
-        let dbJobs=await axios.get(`https://freelancerjo-test.herokuapp.com/getJobs`)
-        console.log(typeof(dbJobs))
-        let results=dbJobs.data
+
+        let dbJobs = await axios.get(`https://freelancerjo-test.herokuapp.com/getJobs`)
+        console.log(typeof (dbJobs))
+        let results = dbJobs.data
         this.setState({
             job: results
-            
+
 
         })
-        
+
     }
     render() {
         return (
 
-            <div style={{backgroundColor: 'white'}}>
-               
+            <div style={{ backgroundColor: 'white' }}>
+
                 {!(this.state.modalShow) &&
 
 
-<Card className="text-center" >
-  <Card.Header ><h3> Current Job Post</h3> </Card.Header>
-  <Card.Body>
- 
-    <Button  onClick={this.setModalShow} variant="warning">Add New Job Offer</Button>
-  </Card.Body>
- 
-</Card>
+                    <Card className="text-center" >
+                        <Card.Header ><h3> Current Job Post</h3> </Card.Header>
+                        <Card.Body>
+
+                            <Button onClick={this.setModalShow} variant="warning">Add New Job Offer</Button>
+                        </Card.Body>
+
+                    </Card>
 
 
                     // <Button onClick={this.setModalShow} variant="primary">Primary</Button>
@@ -219,25 +218,25 @@ class PostJobOffer extends Component {
 
                             <Modal.Footer>
                                 <Button class="cancelBtn" onClick={this.onHide} variant="secondary">Cancel</Button>
-                                <Button class="submitBtn" variant="" style={{backgroundColor: '#ffc107'}} type="submit">
+                                <Button class="submitBtn" variant="" style={{ backgroundColor: '#ffc107' }} type="submit">
                                     Submit
                                 </Button>
 
-                                <Button class="createBtn" variant="" style={{backgroundColor: '#ffc107'}} onClick={this.setModalShow}>
-                            Create a New Job Offer
-                        </Button>
+                                <Button class="createBtn" variant="" style={{ backgroundColor: '#ffc107' }} onClick={this.setModalShow}>
+                                    Create a New Job Offer
+                                </Button>
                             </Modal.Footer>
                         </Form>
                     </Modal.Dialog>
-                    
-</>
+
+                    </>
 
 
 
-                
-                    
-                    
-                  
+
+
+
+
                 }
                 {
                     this.state.job.map(element => {
@@ -286,7 +285,7 @@ class PostJobOffer extends Component {
                     })
                 }
 
-                
+
             </div>
         )
     }
