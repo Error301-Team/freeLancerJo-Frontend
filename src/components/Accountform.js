@@ -73,12 +73,12 @@ class Accountform extends Component {
         })
     }
 
-    // handleChangeemail = (e) => {
-    //     let email = e.target.value;
-    //     this.setState({
-    //         email: email
-    //     })
-    // }
+    handleChangefirstname = (e) => {
+        let firstname = e.target.value;
+        this.setState({
+            firstname: firstname
+        })
+    }
 
     handleChangeSchool = (e) => {
         let School = e.target.value;
@@ -178,7 +178,7 @@ class Accountform extends Component {
                                     <h4 class="text-right">Profile Settings</h4>
                                 </div>
                                 <div class="row mt-2">
-                                    <div class="col-md-6"><label class="labels" >Name</label><input onChange={this.handleChangename} type="text" class="form-control" placeholder="first name" /></div>
+                                    <div class="col-md-6"><label class="labels" >Name</label><input onChange={this.handleChangefirstname} type="text" class="form-control" placeholder="first name" /></div>
                                     <div class="col-md-6"><label class="labels">Surname</label><input onChange={this.handleChangesurname} type="text" class="form-control" placeholder="surname" /></div>
                                 </div>
                                 <div class="row mt-3">

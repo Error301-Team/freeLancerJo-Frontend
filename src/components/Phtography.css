@@ -108,7 +108,7 @@ section .section-title {
 
 .frontside .card,
 .backside .card {
-    height: 400px;
+    height:500px;
     width: 300px;
 }
 
@@ -142,3 +142,32 @@ section .section-title {
     color: white;
     padding-top: 55px;
   }
+
+  .formOption{
+ 
+    display: table;
+    margin: auto !important;
+    width:50%
+  }
+
+  .h5, h5 {
+    color: white;
+    font-size: 1rem;
+    margin: auto !important;
+    display: table;
+    padding-bottom: 10px;
+}
+.btnSubmitOption{
+
+    margin: auto !important;
+display: table;
+background-color: #ffc107
+}
+
+
+.buttonOption{
+    margin: auto !important;
+    display: table;
+    margin-top: 15px !important;
+
+}
