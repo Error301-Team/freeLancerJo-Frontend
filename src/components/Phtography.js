@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './Phtography.css'
 import axios from 'axios';
 import Spinner from './Spinner';
+import Phtography1 from './Phtography1';
 import {
     Row,
     Col,
@@ -17,6 +18,8 @@ class Phtography extends Component {
             showFilteredUsers: false,
             search: "",
             saver: "",
+            user: {},
+            showUser: false
         }
     }
     componentDidMount = async () => {
@@ -69,9 +72,37 @@ class Phtography extends Component {
             })
 
         }
-    }
 
+    }
+    show = (Element) => {
+        this.setState({
+            showUser: true,
+            user: Element,
+        })
+    }
+    hide = () => {
+        this.setState({
+            showUser: false,
+        })
+    }
     render() {
+        if (this.state.showUser) {
+            return <>
+                <Spinner />
+                <Button variant="warning" onClick={this.hide} >Back</Button>
+                <Phtography1 job_describtion={this.state.user.job_describtion}
+                    name={this.state.user.name}
+                    phoneNumber={this.state.user.phoneNumber}
+                    email={this.state.user.email}
+                    location={this.state.user.location}
+                    lauguages={this.state.user.lauguages}
+                    skills={this.state.user.skills}
+                    experience={this.state.user.experience}
+                    price={this.state.user.price}
+                    img={this.state.user.img}
+                />
+            </>
+        }
         return (
             <>
                 <Spinner />
@@ -100,9 +131,6 @@ class Phtography extends Component {
 
 
 
-
-
-                    {console.log(this.filterArray(this.state.users))}
                     {this.filterArray(this.state.users).map(Element => {
 
 
@@ -110,7 +138,7 @@ class Phtography extends Component {
 
 
 
-                            <div>
+                            <div onClick={e => this.show(Element)}>
 
                                 <div class="image-flip">
                                     <div class="mainflip flip-0">
