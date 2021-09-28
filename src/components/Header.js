@@ -28,6 +28,7 @@ class Header extends Component {
                                         <Link to="/freelancerprofile" className="nav-link">freelancerprofile</Link>
                                         <Link to="/phtography" className="nav-link">phtography</Link>
                                         <Link to="/postjoboffer" className="nav-link">Post Job Offer</Link>
+                                        <Link to="/logintype" className="nav-link">login type</Link>
                                     </Nav>
                                 </Col>
                                 {/* <Col lg={2} className="login">

@@ -1,0 +1,19 @@
+/* #formstyle{
+    margin: auto !important;
+} */
+
+.centerit{
+border: none !important;
+background-color: rgba(50, 150,80, 0) !important;
+margin: auto !important;
+display: table !important;
+}
+
+.centeritdef{
+    margin: auto !important;
+    display: table !important;
+}
+
+.form-check-label{
+    margin: 5px !important;
+}

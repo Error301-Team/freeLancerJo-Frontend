@@ -11,6 +11,7 @@ import Phtography from './components/Phtography';
 import Ourmission from './components/Ourmission';
 import Contactus from './components/Contactus';
 import PostJobOffer from './components/PostJobOffer';
+import Logintype from './components/Logintype';
 import {
   BrowserRouter as Router,
   Switch,
@@ -113,6 +114,13 @@ class App extends Component {
               <Header />
               <div style={{ minHeight: "580px" }}>
                 <PostJobOffer />
+              </div>
+              <Footer />
+            </Route>
+            <Route path="/logintype">
+              <Header />
+              <div style={{ minHeight: "580px" }}>
+              <Logintype />
               </div>
               <Footer />
             </Route>

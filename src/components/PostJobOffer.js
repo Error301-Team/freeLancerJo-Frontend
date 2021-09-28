@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Form, Button, Modal, Card } from 'react-bootstrap';
-import JobPost from "../assets/JobPost.png";
+// import { Form, Button, Modal, Card } from 'react-bootstrap';
 import './JobPosts.css';
-import { withAuth0 } from '@auth0/auth0-react';
+import PJobOffers from './PJobOffers';
 
 class PostJobOffer extends Component {
     constructor(props) {
@@ -14,38 +13,23 @@ class PostJobOffer extends Component {
             email: '',
             category: '',
             location: '',
-            skills: [],
-            tools: [],
-            qualification: [],
+            skills: "",
+            tools: "",
+            qualification: "",
             salary: '',
             phononumber: '',
             modalShow: false,
-            job: []
+            update:false,
+            job: [],
+            newJobsArray:[]
         }
-    }
-
-
-    handleChange = e => {
-        let { name, description, email, category, location, skills, tools, qualification, salary, phononumber } = e.target.value
-        this.setState({
-            name: name,
-            description: description,
-            email: email,
-            category: category,
-            location: location,
-            skills: skills,
-            tools: tools,
-            qualification: qualification,
-            salary: salary,
-            phononumber: phononumber,
-        })
     }
     submitHandle = async (e) => {
         e.preventDefault();
         let data = {
             name: this.state.name,
             description: this.state.description,
-            email: this.props.auth0.user.email,
+            email: this.state.email,
             category: this.state.category,
             location: this.state.location,
             skills: this.state.skills.split(','),
@@ -55,10 +39,14 @@ class PostJobOffer extends Component {
             phononumber: this.state.phononumber,
         }
         console.log(process.env.REACT_APP_BACKEND_API_KEY);
-        let job = axios.post(`${process.env.REACT_APP_BACKEND_API_KEY}/createJob`, data);
-        console.log(job);
-
+        let job = await axios.post(`${process.env.REACT_APP_BACKEND_API_KEY}/createJob`, data);
+        let result=job.data
+        this.setState({
+            update:true,
+            newJobsArray:result,
+        })
     }
+
     setModalShow = () => {
         this.setState({
             modalShow: true,
@@ -79,12 +67,12 @@ class PostJobOffer extends Component {
     }
 
 
-    // handleChangeEmail = (e) => {
-    //     let email = e.target.value;
-    //     this.setState({
-    //         email: email,
-    //     })
-    // }
+    handleChangeEmail = (e) => {
+        let email = e.target.value;
+        this.setState({
+            email: email,
+        })
+    }
 
     handleChangeCategory = (e) => {
         let category = e.target.value;
@@ -148,8 +136,6 @@ class PostJobOffer extends Component {
         let results = dbJobs.data
         this.setState({
             job: results
-
-
         })
 
     }
@@ -186,16 +172,16 @@ class PostJobOffer extends Component {
                         <Form onSubmit={this.submitHandle}>
                             <Modal.Body>
                                 <Form.Control onChange={this.handleChangeJobName} type="text" placeholder="Job Name" />
-
-                                {/* <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                                <br />
+                                <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                                     <Form.Label>Email address</Form.Label>
                                     <Form.Control onChange={this.handleChangeEmail} type="email" placeholder="name@example.com" />
-                                </Form.Group> */}
+                                </Form.Group>
                                 <br />
                                 <Form.Select onChange={this.handleChangeCategory} aria-label="Default select example">
                                     <option>Select a Category</option>
                                     <option value="Architect">Architect</option>
-                                    <option value="Software Develope">Software Developer</option>
+                                    <option value="Software Develope">Software Develope</option>
                                     <option value="Design">Design</option>
                                     <option value="Photographer">Photographer</option>
                                 </Form.Select>
@@ -232,65 +218,12 @@ class PostJobOffer extends Component {
                     </Modal.Dialog>
 
                     </>
-
-
-
-
-
-
-
                 }
-                {
-                    this.state.job.map(element => {
-                        return (
-                            <div>
-
-
-                                <section class="light">
-                                    <div class="container py-2">
-                                        <div class="h1 text-center " id="pageHeaderTitle">Job Post</div>
-
-                                        <article class="postcard light ">
-                                            <a class="postcard__img_link" href="#">
-                                                <img class="postcard__img" src={JobPost} alt="Image Title" />
-                                            </a>
-                                            <div class="postcard__text ">
-                                                <h1 class="postcard__title">{element.name}</h1>
-
-                                                <div class="postcard__bar"></div>
-                                                <h6><p>{element.category}</p></h6>
-
-
-                                                <div class="postcard__preview-txt"><p>{element.description}</p></div>
-
-                                                <div class="gridContent">
-                                                    <h6>Skills:</h6><p>{element.skills}</p>
-                                                    <h6>Tools:</h6><p>{element.tools}</p>
-                                                    <h6>Qualifications:</h6><p>{element.qualification}</p>
-
-                                                    <h6>Salary:</h6><p>{`${element.salary} JOD`}</p>
-
-
-                                                    <h6>Location:</h6><p>{element.location}</p>
-                                                    <h6>Phone:</h6><p>{element.phononumber}</p>
-                                                    <h6>Email:</h6><p>{element.email}</p>
-
-                                                </div>
-                                            </div>
-                                        </article>
-
-
-                                    </div>
-                                </section>
-                            </div>
-                        )
-                    })
-                }
-
+            {this.state.update?<PJobOffers job={this.state.newJobsArray}/>:  <PJobOffers job={this.state.job}/>}
 
             </div>
         )
     }
 }
 
-export default withAuth0(PostJobOffer)
+export default PostJobOffer
