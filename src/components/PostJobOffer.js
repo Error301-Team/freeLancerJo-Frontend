@@ -29,7 +29,7 @@ class PostJobOffer extends Component {
         let data = {
             name: this.state.name,
             description: this.state.description,
-            email: this.state.email,
+            email: this.props.auth0.user.email,
             category: this.state.category,
             location: this.state.location,
             skills: this.state.skills.split(','),
