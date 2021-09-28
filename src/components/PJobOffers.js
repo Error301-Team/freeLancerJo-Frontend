@@ -1,15 +1,60 @@
 import React, { Component } from 'react'
 import JobPost from "../assets/JobPost.png";
+import { Button } from 'react-bootstrap'
+import { withAuth0 } from '@auth0/auth0-react'
+import axios from 'axios';
 class PJobOffers extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            users: [],
+            job: [],
+            showFilteredUsers: false,
+            found: false,
+            redirectTo: false,
+            redirect: "",
+            redirectBtn: "",
+            id: "",
+            alreadyApplied: "",
+        }
+    }
+    submitHandle = async (e) => {
+        // e.preventDefault();
+        let users = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/getUsers`);
+        let foundFreelancer = users.data.find(Element => Element.email == this.props.auth0.user.email);
+        let getJobs = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/getJobs`);
+        let applied = getJobs.data.find(Element => Element._id == this.state.id).applied;
+        let find = applied.find(Element => Element.email == this.props.auth0.user.email)
+        console.log(find)
+        if (find) {
+            this.setState({
+                alreadyApplied: find,
+            })
+        } else {
+            let body = {
+                applied: applied.concat(foundFreelancer),
+            };
+            let apply = await axios.patch(`${process.env.REACT_APP_BACKEND_URL}/updateJob/${this.state.id}`,body);
+        }
+    }
+    hi2 = (tee) => {
+        let id = tee
+        this.setState({
+            id: id
+        })
+        this.submitHandle();
+    }
+
     render() {
         return (
             <div>
                 {
+                    console.log(this.state.alreadyApplied)
+                }
+                {
                     this.props.job.map(element => {
                         return (
                             <div>
-
-
                                 <section class="light">
                                     <div class="container py-2">
                                         <div class="h1 text-center " id="pageHeaderTitle">Job Post</div>
@@ -38,7 +83,7 @@ class PJobOffers extends Component {
                                                     <h6>Location:</h6><p>{element.location}</p>
                                                     <h6>Phone:</h6><p>{element.phononumber}</p>
                                                     <h6>Email:</h6><p>{element.email}</p>
-
+                                                    {element.applied.find(Element => Element.email == this.props.auth0.user.email) ? <Button variant="primary">Applied</Button> : <Button onClick={(e) => this.hi2(element._id)} variant="primary">Apply for this job</Button>}
                                                 </div>
                                             </div>
                                         </article>
@@ -55,4 +100,4 @@ class PJobOffers extends Component {
     }
 }
 
-export default PJobOffers
+export default withAuth0(PJobOffers)
