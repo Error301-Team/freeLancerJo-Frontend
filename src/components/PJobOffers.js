@@ -12,14 +12,14 @@ class PJobOffers extends Component {
 
                                 <section class="light">
                                     <div class="container py-2">
-                                        <div class="h1 text-center " id="pageHeaderTitle">Job Post</div>
+                                        <div class="h2 text-center " id="pageHeaderTitle">Job Post</div>
 
                                         <article class="postcard light ">
                                             <a class="postcard__img_link" href="#">
                                                 <img class="postcard__img" src={JobPost} alt="Image Title" />
                                             </a>
                                             <div class="postcard__text ">
-                                                <h1 class="postcard__title">{element.name}</h1>
+                                                <h3 class="postcard__title">{element.name}</h3>
 
                                                 <div class="postcard__bar"></div>
                                                 <h6><p>{element.category}</p></h6>

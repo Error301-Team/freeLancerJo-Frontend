@@ -8,6 +8,7 @@ import { withAuth0 } from '@auth0/auth0-react';
 import LoginButton from './LoginButton';
 // import Button from './Button';
 import LogoutButton from './LogoutButton';
+import Phtography from './Phtography'
 
 class Main extends Component {
 
@@ -46,14 +47,18 @@ class Main extends Component {
             <LoginButton callApi={this.callApi} />
         }
         <img className="mainImage" src={mainImage} alt="" />
-        {/* <Button
+        <Button
           className=" button1 "
           style={{ backgroundColor: '#ffc107bf' }}
-          href=""
-          onClick={e => e.preventDefault()}
+          href="Phtography"
+          // onClick={e => e.preventDefault()
+           
+          // <>
+         
+          // }
         >
-          Join Us
-        </Button> */}
+       Find FreeLancer
+        </Button>
 
       </div >
     )

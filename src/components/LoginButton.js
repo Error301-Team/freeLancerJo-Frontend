@@ -7,6 +7,9 @@ const LoginButton = () => {
 
   return <button id="button" onClick={() => loginWithRedirect()}>
   Join Us </button>;
+
+
+
 };
 
 export default LoginButton;

@@ -1,9 +1,9 @@
 #button {
     position: relative;
     background-color:  #ffc107bf;
-    top: 580px;
-    left: 800px;
-    width: 200px;
+    top: 517px;
+left: 43%;
+ 
     text-align: center;
     display: inline-block;
     border-radius: 4px;
@@ -13,3 +13,5 @@
     width: 13%;
     cursor: pointer;
 }
+
+

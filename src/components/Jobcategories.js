@@ -5,6 +5,7 @@ import Photography from "../assets/Photography.jpg";
 import SoftwareDeveloper from "../assets/SoftwareDeveloper.jpg";
 import { Card, Button, Row, Col, Form, Modal } from 'react-bootstrap';
 import './Jobcategories.css';
+
 import axios from 'axios';
 import PJobOffers from './PJobOffers';
 import { withAuth0 } from '@auth0/auth0-react'
@@ -153,15 +154,17 @@ class Jobcategories extends Component {
           this.state.showFilteredJobs ? <>
             {!(this.state.modalShow) &&
 
-
+<div style={{backgroundColor:'white'}}>
               <Card className="text-center" >
-                <Card.Header ><h3> Current Job Post</h3> </Card.Header>
+                <Card.Header ><h1> Current Job Posts</h1> </Card.Header>
                 <Card.Body>
 
                   <Button onClick={this.setModalShow} variant="warning">Add New Job Offer</Button>
                 </Card.Body>
 
               </Card>
+              
+              </div>
             }
             {this.state.modalShow &&
               <><Modal.Dialog
