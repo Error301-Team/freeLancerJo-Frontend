@@ -36,3 +36,20 @@
     transform: rotate(360deg);
   }
 }
+
+#spinner{
+  position: absolute;
+  z-index: 100;
+  height: 100%;
+  width: 100%;
+  background-color: #031c30;
+}
+
+#logogif{
+  display: flex;
+  margin: auto;
+  align-content: stretch;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  padding: 18%;
+}

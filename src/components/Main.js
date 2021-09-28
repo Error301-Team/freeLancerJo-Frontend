@@ -9,6 +9,11 @@ import LoginButton from './LoginButton';
 // import Button from './Button';
 import LogoutButton from './LogoutButton';
 
+import Phtography from './Phtography'
+
+
+import Spinner from './Spinner';
+
 class Main extends Component {
 
   callApi = () => {
@@ -34,29 +39,23 @@ class Main extends Component {
 
   render() {
     return (
-      < div className="mainDiv" >
-        {
-          this.props.auth0.isAuthenticated ?
-            <>
-              <LogoutButton  />
-              {/* <h1>{this.props.auth0.user.email}</h1> */}
-              {/* <img src={this.props.auth0.user.picture} alt="" />  */}
-              {/* <Button callApi={this.callApi} /> */}
-            </> :
-            <LoginButton callApi={this.callApi} />
-        }
-         callApi={this.callApi}
-        <img className="mainImage" src={mainImage} alt="" />
-        {/* <Button
-          className=" button1 "
-          style={{ backgroundColor: '#ffc107bf' }}
-          href=""
-          onClick={e => e.preventDefault()}
-        >
-          Join Us
-        </Button> */}
 
-      </div >
+      <>
+        <Spinner />
+        < div className="mainDiv" >
+          {
+            this.props.auth0.isAuthenticated ?
+              <>
+                <LogoutButton />
+                {/* <h1>{this.props.auth0.user.email}</h1> */}
+                {/* <img src={this.props.auth0.user.picture} alt="" />  */}
+                {/* <Button callApi={this.callApi} /> */}
+              </> :
+              <LoginButton callApi={this.callApi} />
+          }
+          <img className="mainImage" src={mainImage} alt="" />
+        </div >
+      </>
     )
   }
 }
