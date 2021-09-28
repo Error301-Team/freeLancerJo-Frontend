@@ -12,6 +12,8 @@ import Ourmission from './components/Ourmission';
 import Contactus from './components/Contactus';
 import PostJobOffer from './components/PostJobOffer';
 import Logintype from './components/Logintype';
+import Spinner from './components/Spinner';
+import "./App.css"
 import {
   BrowserRouter as Router,
   Switch,
@@ -23,6 +25,7 @@ import { withAuth0 } from '@auth0/auth0-react'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 // import {  } from 'react-bootstrap';
+
 
 class App extends Component {
 
@@ -41,7 +44,7 @@ class App extends Component {
   //     })
   //   })
   // }
-  
+
   render() {
     return (
       <>
@@ -90,7 +93,7 @@ class App extends Component {
               <Footer />
             </Route>
             <Route path="/freelancerprofile">
-              <Header  />
+              <Header />
               <div style={{ minHeight: "580px" }}>
                 <Freelancerprofile />
               </div>
@@ -120,7 +123,7 @@ class App extends Component {
             <Route path="/logintype">
               <Header />
               <div style={{ minHeight: "580px" }}>
-              <Logintype />
+                <Logintype />
               </div>
               <Footer />
             </Route>
