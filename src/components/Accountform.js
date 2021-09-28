@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { Form, Col, Button } from 'react-bootstrap'
 import axios from 'axios';
 import './Accountform.css'
+import { withAuth0 } from '@auth0/auth0-react';
+
 class Accountform extends Component {
     constructor(props) {
         super(props);
@@ -23,21 +25,21 @@ class Accountform extends Component {
             img: '',
             From: '',
             To: '',
-            Education:{School:"", AreaOfStudys:"",Degree:"",To:"",From:""},
-            usersList:[],
+            Education: { School: "", AreaOfStudys: "", Degree: "", To: "", From: "" },
+            usersList: [],
         }
     }
     submitHandle = async (e) => {
         e.preventDefault();
-        let AreaOfStudys=this.state.To;
-        let Degree=this.state.From;
-        let To=this.state.AreaOfStudys;
-        let From=this.state.AreaOfStudys;
-        let School= this.state.School
+        let AreaOfStudys = this.state.To;
+        let Degree = this.state.From;
+        let To = this.state.AreaOfStudys;
+        let From = this.state.AreaOfStudys;
+        let School = this.state.School
         let data = {
             name: `${this.state.firstname} ${this.state.surname}`,
             phoneNumber: this.state.phoneNumber,
-            email: this.state.email,
+            email: this.props.auth0.user.email,
             img: this.state.img,
             job_describtion: this.state.job_describtion,
             skills: this.state.skills.split(','),
@@ -45,16 +47,16 @@ class Accountform extends Component {
             price: this.state.price,
             location: this.state.location,
             experience: this.state.experience,
-            Education:{AreaOfStudys:AreaOfStudys,Degree:Degree,From:From,To:To,School:School},
+            Education: { AreaOfStudys: AreaOfStudys, Degree: Degree, From: From, To: To, School: School },
             // madeBy:"Wasem",
             // accoutType:"freelacer",
             // auth0:"done",   
         }
         console.log(data);
-        let newUsersList=await axios.post(`${process.env.REACT_APP_BACKEND_URL}/createUser`, data);
+        let newUsersList = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/createUser`, data);
         console.log(newUsersList);
 
-
+        console.log(this.props.auth0.user.email);
     }
 
     handleChangesurname = (e) => {
@@ -71,12 +73,12 @@ class Accountform extends Component {
         })
     }
 
-    handleChangeemail = (e) => {
-        let email = e.target.value;
-        this.setState({
-            email: email
-        })
-    }
+    // handleChangeemail = (e) => {
+    //     let email = e.target.value;
+    //     this.setState({
+    //         email: email
+    //     })
+    // }
 
     handleChangeSchool = (e) => {
         let School = e.target.value;
@@ -181,7 +183,7 @@ class Accountform extends Component {
                                 </div>
                                 <div class="row mt-3">
                                     <div class="col-md-12"><label class="labels">Phone</label><input onChange={this.handleChangephoneNumber} type="text" class="form-control" placeholder="enter phone number" /></div>
-                                    <div class="col-md-12"><label class="labels">Email ID</label><input onChange={this.handleChangeemail} type="text" class="form-control" placeholder="example@email.com" /></div>
+                                    {/* <div class="col-md-12"><label class="labels">Email ID</label><input onChange={this.handleChangeemail} type="text" class="form-control" placeholder="example@email.com" /></div> */}
                                 </div>
                                 <Form.Group as={Col} controlId="formGrid Experience">
                                     <Form.Label > Experience</Form.Label>
@@ -200,10 +202,10 @@ class Accountform extends Component {
                                         <option> Software Development</option>
                                     </Form.Select>
                                 </Form.Group>
-                               
+
                                 <div class="row mt-3">
 
-                                <div class="col-md-12"><label class="labels">Languages</label><input onChange={this.handleChangelauguages} type="text" class="form-control" placeholder="enter Languages: ex (English, Arabic, french)" required /></div>
+                                    <div class="col-md-12"><label class="labels">Languages</label><input onChange={this.handleChangelauguages} type="text" class="form-control" placeholder="enter Languages: ex (English, Arabic, french)" required /></div>
                                 </div>
                                 <br />
                                 <hr />
@@ -247,4 +249,4 @@ class Accountform extends Component {
 
 
 
-export default Accountform
+export default withAuth0(Accountform)

@@ -3,41 +3,13 @@ import logo from "../assets/logoColor250px.png"
 import './header.css';
 import { Navbar, Container, Nav, Col, Row } from 'react-bootstrap';
 import { Link } from "react-router-dom"
-import axios from "axios";
-import { withAuth0 } from '@auth0/auth0-react';
-import LoginButton from './LoginButton';
-import Button from './Button';
-import LogoutButton from './LogoutButton';
+
 
 
 class Header extends Component {
-
-    callApi = () => {
-        if (this.props.auth0.isAuthenticated) {
-            this.props.auth0.getIdTokenClaims()
-                .then(res => {
-                    const jwt = res.__raw;
-                    const config = {
-                        headers: { "Authorization": `Bearer ${jwt}` },
-                        method: 'get',
-                        baseURL: process.env.REACT_APP_BACKEND_URL,
-                        url: '/auth'
-                    }
-                    axios(config)
-                        .then(result => console.log(result.data))
-                        .catch(err => console.error(err));
-                })
-                .catch(err => console.error(err));
-        } else {
-            console.log("user is not authenticated")
-        }
-    }
-   
-
     render() {
         return (
             <>
-
                 <div className='navBack'>
                     <Container>
                         <Row>
@@ -58,18 +30,9 @@ class Header extends Component {
                                         <Link to="/postjoboffer" className="nav-link">Post Job Offer</Link>
                                     </Nav>
                                 </Col>
-                                <Col lg={2} className="login">
-                                    {
-                                        this.props.auth0.isAuthenticated ?
-                                            <>
-                                                <LogoutButton />
-                                                <h1>{this.props.auth0.user.name}</h1>
-                                                {/* <img src={this.props.auth0.user.picture} alt="" />  */}
-                                                 {/* <Button callApi={this.callApi} /> */}
-                                            </> :
-                                            <LoginButton callApi={this.callApi} />
-                                    }
-                                </Col>
+                                {/* <Col lg={2} className="login">
+                                    
+                                </Col> */}
                             </Navbar>
                         </Row>
                     </Container>
@@ -82,4 +45,4 @@ class Header extends Component {
     }
 }
 
-export default withAuth0(Header)
+export default Header

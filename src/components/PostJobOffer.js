@@ -3,6 +3,8 @@ import axios from 'axios';
 import { Form, Button, Modal, Card } from 'react-bootstrap';
 import JobPost from "../assets/JobPost.png";
 import './JobPosts.css';
+import { withAuth0 } from '@auth0/auth0-react';
+
 class PostJobOffer extends Component {
     constructor(props) {
         super(props);
@@ -43,7 +45,7 @@ class PostJobOffer extends Component {
         let data = {
             name: this.state.name,
             description: this.state.description,
-            email: this.state.email,
+            email: this.props.auth0.user.email,
             category: this.state.category,
             location: this.state.location,
             skills: this.state.skills.split(','),
@@ -77,12 +79,12 @@ class PostJobOffer extends Component {
     }
 
 
-    handleChangeEmail = (e) => {
-        let email = e.target.value;
-        this.setState({
-            email: email,
-        })
-    }
+    // handleChangeEmail = (e) => {
+    //     let email = e.target.value;
+    //     this.setState({
+    //         email: email,
+    //     })
+    // }
 
     handleChangeCategory = (e) => {
         let category = e.target.value;
@@ -184,16 +186,16 @@ class PostJobOffer extends Component {
                         <Form onSubmit={this.submitHandle}>
                             <Modal.Body>
                                 <Form.Control onChange={this.handleChangeJobName} type="text" placeholder="Job Name" />
-                                <br />
-                                <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+
+                                {/* <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                                     <Form.Label>Email address</Form.Label>
                                     <Form.Control onChange={this.handleChangeEmail} type="email" placeholder="name@example.com" />
-                                </Form.Group>
+                                </Form.Group> */}
                                 <br />
                                 <Form.Select onChange={this.handleChangeCategory} aria-label="Default select example">
                                     <option>Select a Category</option>
                                     <option value="Architect">Architect</option>
-                                    <option value="Software Develope">Software Develope</option>
+                                    <option value="Software Develope">Software Developer</option>
                                     <option value="Design">Design</option>
                                     <option value="Photographer">Photographer</option>
                                 </Form.Select>
@@ -291,4 +293,4 @@ class PostJobOffer extends Component {
     }
 }
 
-export default PostJobOffer
+export default withAuth0(PostJobOffer)
