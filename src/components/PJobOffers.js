@@ -37,7 +37,7 @@ class PJobOffers extends Component {
                 applied: applied.concat(foundFreelancer),
             };
             let apply = await axios.patch(`${process.env.REACT_APP_BACKEND_URL}/updateJob/${this.state.id}`, body);
-            let result = apply.data.filter(Element => Element.category==this.props.search );
+            let result = apply.data.filter(Element => Element.category==this.props.search);
             this.setState({
                 apply: result,
                 applyBoolean: true,

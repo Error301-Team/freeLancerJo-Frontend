@@ -143,7 +143,11 @@ class Jobcategories extends Component {
       description: description,
     })
   }
-
+back=()=>{
+  this.setState({
+    showFilteredJobs:false
+  })
+}
   render() {
     return (
 
@@ -156,7 +160,7 @@ class Jobcategories extends Component {
               <Card className="text-center" >
                 <Card.Header ><h3> Current Job Post</h3> </Card.Header>
                 <Card.Body>
-
+                <Button onClick={this.back} variant="warning">Back</Button>
                   <Button onClick={this.setModalShow} variant="warning">Add New Job Offer</Button>
                 </Card.Body>
 
