@@ -1,49 +1,10 @@
 import React, { Component } from 'react'
-import { Form, Col } from 'react-bootstrap'
-import axios from 'axios';
-import './freelancerProfile.css'
-import { withAuth0 } from '@auth0/auth0-react';
-import Spinner from './Spinner';
-export class Freelancerprofile extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            users: {}
 
-        }
-    }
-
-
-    componentDidMount = async () => {
-        let data = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/getUsers`)
-
-        console.log(data);
-        let result = data.data.find(user => user.email == this.props.auth0.user.email)
-        this.setState({
-            users: result
-        });
-
-        // console.log(this.props.auth0.user.email);
-    }
-    // componentDidMount = async () => {
-    //     console.log(this.props.auth0.user.email );
-
-    //     let data = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/auth`)
-
-    //     console.log(data);
-    //     let result = data.data.filter(user => user.email == (this.props.auth0.user.email))
-    //     console.log(result);
-    //     this.setState({
-    //         users: result[0]
-
-    //     });
-    //     console.log(this.state.users);
-    // }
+class Phtography1 extends Component {
 
     render() {
         return (
             <>
-                <Spinner />
                 <section class="section about-section gray-bg" id="about">
                     <div class="container">
                         <div class="row align-items-center flex-row-reverse">
@@ -51,42 +12,46 @@ export class Freelancerprofile extends Component {
                                 <div class="about-text go-to">
                                     <h3 class="dark-color">About Me</h3>
                                     <h6 class="theme-color lead"></h6>
-                                    <p><mark>{this.state.users.job_describtion}</mark>.</p>
+                                    <p><mark>{this.props.job_describtion}</mark>.</p>
                                     <div class="row about-list">
                                         <div class="col-md-6">
                                             <div class="media">
                                                 <label>Name</label>
-                                                <p>{this.state.users.name}</p>
+                                                <p>{this.props.name}</p>
                                             </div>
                                             <div class="media">
                                                 <label>Phone </label>
-                                                <p>{this.state.users.phoneNumber}</p>
+                                                <p>{this.props.phoneNumber}</p>
                                             </div>
                                             <div class="media">
                                                 <label>Email</label>
-                                                <p>{this.state.users.email}</p>
+                                                <p>{this.props.email}</p>
                                             </div>
                                             <div class="media">
                                                 <label>Location</label>
-                                                <p>{this.state.users.location}</p>
+                                                <p>{this.props.location}</p>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="media">
                                                 <label>Languages</label>
-                                                <p>{this.state.users.lauguages}</p>
+                                                <p>{this.props.lauguages}</p>
                                             </div>
                                             <div class="media">
                                                 <label> Skills</label>
-                                                <p>{this.state.users.skills}</p>
+                                                {this.props.skills.map(Element => {
+                                                    return (
+                                                        <li>{Element}</li>
+                                                    )
+                                                })}
                                             </div>
                                             <div class="media">
                                                 <label>Experience</label>
-                                                <p>{this.state.users.experience}</p>
+                                                <p>{this.props.experience}</p>
                                             </div>
                                             <div class="media">
                                                 <label>Price</label>
-                                                <p>{this.state.users.price}$</p>
+                                                <p>{this.props.price}$</p>
                                             </div>
                                         </div>
                                     </div>
@@ -94,7 +59,7 @@ export class Freelancerprofile extends Component {
                             </div>
                             <div class="col-lg-6">
                                 <div class="about-avatar">
-                                    <img src={this.state.users.img} title="this.props.profilePic" alt="" />
+                                    <img className="profile-picture" src={this.props.img} title="this.props.profilePic" alt="" />
                                 </div>
                             </div>
                         </div>
@@ -133,4 +98,4 @@ export class Freelancerprofile extends Component {
     }
 }
 
-export default withAuth0(Freelancerprofile)
+export default Phtography1
