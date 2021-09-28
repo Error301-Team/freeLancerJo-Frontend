@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './Phtography.css'
 import axios from 'axios';
 import {
+    Row,
     Col,
     Form,
     FloatingLabel,
@@ -71,14 +72,13 @@ class Phtography extends Component {
 
 render() {
     return (
-        <><h1 class="h1FreeLancer">Our FreeLancers</h1><div className="gridCards">
-            <form className="form"
-                onSubmit={this.handleSubmit}
-            >
+        <><h1 class="h1FreeLancer">Our FreeLancers</h1>  
+        
+        <h5>Filter by the field of work</h5>
+        <form class="formOption" onSubmit={this.handleSubmit} >
                 <Col md className="DropDownMenu">
-                    <FloatingLabel controlId="floatingSelect" label="Filter by the field of work">
-                        <Form.Select onChange={(e) => { this.handleSelect(e) }}
-                        >
+                    <FloatingLabel controlId="floatingSelect" label="">
+                        <Form.Select onChange={(e) => { this.handleSelect(e) }} className="bg-white  py-3" >
                             <option value={"all"}>Category :</option>
                             <option value={"Architecture"}>Architecture </option>
                             <option value={"Designer"}>Designer </option>
@@ -87,11 +87,27 @@ render() {
                         </Form.Select>
                     </FloatingLabel>
                 </Col>
-                <Button as="input" type="submit" value="Click Me To Filter" />{' '}
+                <div class="buttonOption">
+                <Button variant="warning" as="input" type="submit" value="Click Me To Filter" />{' '}
+                </div>
             </form>
+        
+        
+        
+          <div className="gridCards">
+
+        
+    
+
+           
             {console.log(this.filterArray(this.state.users))}
             {this.filterArray(this.state.users).map(Element => {
+
+
                 return (
+
+
+
                     <div>
 
                         <div class="image-flip">
@@ -102,21 +118,21 @@ render() {
                                             <p><img class=" img-fluid" style={{ objectFit: 'cover' }} src={Element.img} alt="card image" /></p>
                                             <h5 class="card-title">{Element.name}</h5>
                                             <p class="card-text">{Element.job_describtion}</p>
-                                            <h6>Skills: {Element.skills}</h6>
-                                            <h6>Rating: {Element.rating}</h6>
-                                            <h6>Price Per/Hour: {Element.price}</h6>
+                                            <h6>Skills:</h6><p> {Element.skills}</p>
+                                            <h6>Rating:</h6><p> {Element.rating}</p>
+                                            <h6>Price Per/Hour:</h6><p> {Element.price}</p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="backside">
                                     <div class="card">
                                         <div class="card-body text-center mt-4">
-                                            <h6 class="card-title">Experience: {Element.experience}</h6>
+                                            <h6 class="card-title">Experience:</h6><p> {Element.experience}</p>
                                             {/* <h6 class="card-title">Education : "{Element.Education}"</h6> */}
-                                            <h6 class="card-title">Languages: {Element.lauguages}</h6>
-                                            <h6 class="card-title">Location: {Element.location}</h6>
-                                            <h6 class="card-title">Phone: {Element.phoneNumber}</h6>
-                                            <h6 class="card-title">Email: {Element.email}</h6>
+                                            <h6 class="card-title">Languages:</h6><p> {Element.lauguages}</p>
+                                            <h6 class="card-title">Location:</h6><p> {Element.location}</p>
+                                            <h6 class="card-title">Phone:</h6><p> {Element.phoneNumber}</p>
+                                            <h6 class="card-title">Email:</h6><p> {Element.email}</p>
 
                                         </div>
                                     </div>
