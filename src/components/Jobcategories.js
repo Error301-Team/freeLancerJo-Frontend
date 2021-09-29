@@ -3,8 +3,10 @@ import Architecture from "../assets/Architecture.jpg";
 import Designer from "../assets/Designer.jpg";
 import Photography from "../assets/Photography.jpg";
 import SoftwareDeveloper from "../assets/SoftwareDeveloper.jpg";
-import { Card, Button, Row, Col, Form, Modal } from 'react-bootstrap';
+import Spinner from './Spinner';
+import { Card, Button, Form, Modal } from 'react-bootstrap';
 import './Jobcategories.css';
+
 import axios from 'axios';
 import PJobOffers from './PJobOffers';
 import { withAuth0 } from '@auth0/auth0-react'
@@ -31,10 +33,7 @@ class Jobcategories extends Component {
       newJobsArray: [],
     }
   }
-  filterArray = (arr) => {
 
-
-  }
   filter = async (e) => {
     let search = e.target.innerText;
     this.setState({
@@ -73,7 +72,6 @@ class Jobcategories extends Component {
       salary: this.state.salary,
       phononumber: this.state.phononumber,
     }
-    console.log(process.env.REACT_APP_BACKEND_API_KEY);
     let job = await axios.post(`${process.env.REACT_APP_BACKEND_API_KEY}/createJob`, data);
     let result = job.data;
     let results = result.filter(Element => Element.category == this.state.search);
@@ -144,24 +142,30 @@ class Jobcategories extends Component {
       description: description,
     })
   }
-
+  back = () => {
+    this.setState({
+      showFilteredJobs: false
+    })
+  }
   render() {
     return (
-
-      <div style={{ marginTop: '124px' }}>
+      <div style={{ height: "590px", paddingTop: '134px',  paddingBottom:"135px", backgroundColor:"#2c394b"}}>
+        {this.state.showFilteredJobs && <Spinner />}
         {
           this.state.showFilteredJobs ? <>
             {!(this.state.modalShow) &&
 
+              <div style={{ backgroundColor: 'white' }}>
+                <Card className="text-center" >
+                  <Card.Header ><h1> Current Job Posts</h1> </Card.Header>
+                  <Card.Body>
+                    <Button onClick={this.back} variant="warning">Back</Button>
+                    <Button onClick={this.setModalShow} variant="warning">Add New Job Offer</Button>
+                  </Card.Body>
 
-              <Card className="text-center" >
-                <Card.Header ><h3> Current Job Post</h3> </Card.Header>
-                <Card.Body>
+                </Card>
 
-                  <Button onClick={this.setModalShow} variant="warning">Add New Job Offer</Button>
-                </Card.Body>
-
-              </Card>
+              </div>
             }
             {this.state.modalShow &&
               <><Modal.Dialog
@@ -223,70 +227,70 @@ class Jobcategories extends Component {
 
               </>
             }
-           {this.state.update?<PJobOffers job={this.state.newJobsArray}/>:<PJobOffers job={this.state.job} />}
-           
+            {this.state.update ? <PJobOffers job={this.state.newJobsArray} search={this.state.search} /> : <PJobOffers job={this.state.job} search={this.state.search} />}
+
           </>
 
 
             :
-
-            <><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" /><div class="container">
-              <div class="row justify-content-center">
-                <div class="col-12 col-sm-8 col-lg-6">
-                  <div class="section_heading text-center wow fadeInUp" data-wow-delay="0.2s" style={{ visibility: 'visible', animationDelay: '0.2s', animationName: 'fadeInUp' }}>
-
-
-                    <div class="line"></div>
+            <>
+              <Spinner />
+              <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" /><div class="container">
+                <div class="row justify-content-center">
+                  <div class="col-12 col-sm-8 col-lg-6">
+                    <div class="section_heading text-center wow fadeInUp" data-wow-delay="0.2s" style={{ visibility: 'visible', animationDelay: '0.2s', animationName: 'fadeInUp' }}>
+                      <div class="line"></div>
+                    </div>
                   </div>
+                  <div class="row">
+                    <div class="col-12 col-sm-6 col-lg-3">
+                      <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.2s" style={{ visibility: 'visible', animationDelay: '0.2s', animationName: 'fadeInUp' }}>
+                        <div class="advisor_thumb"><img src={Architecture} alt="" />
+                        </div>
+                        <div class="single_advisor_details_info">
+
+                          <p class="designation" value="Architecture" onClick={e => this.filter(e)}>Architect</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3">
+                      <div style={{borderRadius: "5px !important",boxShadow:"0 0 35px #060606 !important"}} class="single_advisor_profile wow fadeInUp" data-wow-delay="0.3s" value="Designer" style={{ visibility: 'visible', animationDelay: '0.2s', animationName: 'fadeInUp' }}>
+                        <div class="advisor_thumb"><img src={Designer} alt="" />
+                        </div>
+                        <div class="single_advisor_details_info">
+
+                          <p class="designation" onClick={e => this.filter(e)}>Design</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3">
+                      <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.4s" value="Photography" style={{ visibility: 'visible', animationDelay: '0.2s', animationName: 'fadeInUp' }}>
+                        <div class="advisor_thumb"><img src={Photography} alt="" />
+                        </div>
+                        <div class="single_advisor_details_info">
+
+                          <p class="designation" onClick={(e) => (this.filter(e))}>Photographer</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3">
+                      <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.5s" value="Software Development" style={{ visibility: 'visible', animationDelay: '0.2s', animationName: 'fadeInUp' }}>
+                        <div class="advisor_thumb"><img src={SoftwareDeveloper} alt="" />
+                        </div>
+                        <div class="single_advisor_details_info">
+
+                          <p class="designation" onClick={e => this.filter(e)}>Software Developer</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
                 </div>
               </div>
-
-              <div class="row">
-                <div class="col-12 col-sm-6 col-lg-3">
-                  <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.2s" style={{ visibility: 'visible', animationDelay: '0.2s', animationName: 'fadeInUp' }}>
-                    <div class="advisor_thumb"><img src={Architecture} alt="" />
-                    </div>
-                    <div class="single_advisor_details_info">
-
-                      <p class="designation" value="Architecture" onClick={e => this.filter(e)}>Architect</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12 col-sm-6 col-lg-3">
-                  <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.3s" value="Designer" style={{ visibility: 'visible', animationDelay: '0.2s', animationName: 'fadeInUp' }}>
-                    <div class="advisor_thumb"><img src={Designer} alt="" />
-                    </div>
-                    <div class="single_advisor_details_info">
-
-                      <p class="designation" onClick={e => this.filter(e)}>Design</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12 col-sm-6 col-lg-3">
-                  <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.4s" value="Photography" style={{ visibility: 'visible', animationDelay: '0.2s', animationName: 'fadeInUp' }}>
-                    <div class="advisor_thumb"><img src={Photography} alt="" />
-                    </div>
-                    <div class="single_advisor_details_info">
-
-                      <p class="designation" onClick={e => this.filter(e)}>Photographer</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12 col-sm-6 col-lg-3">
-                  <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.5s" value="Software Development" style={{ visibility: 'visible', animationDelay: '0.2s', animationName: 'fadeInUp' }}>
-                    <div class="advisor_thumb"><img src={SoftwareDeveloper} alt="" />
-                    </div>
-                    <div class="single_advisor_details_info">
-
-                      <p class="designation" onClick={e => this.filter(e)}>Software Developer</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div></>
+            </>
         }
-
       </div>
+
     )
   }
 

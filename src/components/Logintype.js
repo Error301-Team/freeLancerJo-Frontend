@@ -3,6 +3,7 @@ import { Form, ToggleButtonGroup, ToggleButton, Button, Card, ListGroupItem } fr
 import "./logintype.css"
 import axios from 'axios';
 import { withAuth0 } from '@auth0/auth0-react'
+import Spinner from './Spinner';
 import {
     Redirect
   } from "react-router-dom";
@@ -53,20 +54,17 @@ class Logintype extends Component {
         this.setState({
             redirectBtn: e.target.value,
         });
-        console.log(this.state.redirectBtn)
     }
     onChangeFreeLancerProfile=(e)=>{
         this.setState({
             redirectBtn: e.target.value,
         });
-        console.log(this.state.redirectBtn)
     }
     onSubmitForm =()=>{
         this.setState({
             redirectTo:true,
         });
     }
-
 
     render() {
         if (this.state.redirect){
@@ -77,21 +75,22 @@ class Logintype extends Component {
         }
         return (
             <div id="formstyle" style={{ padding: "50px" }}>
+                <Spinner/>
                 {!(this.state.showFilteredUsers)&&<Card className="p-3 mb-2 bg-light text-dark" style={{ width: '30rem', display: "table !important", margin: "auto" }}>
                     <Card.Img className="centerit" style={{ width: '5rem', borderRadius: "50%" }} variant="top" src="https://via.placeholder.com/100x100" />
                     <Card.Body>
 
-                        <Card.Title style={{ display: "table", margin: "auto" }}>Complete Your Free Account Setup</Card.Title>
+                        <Card.Title style={{ display: "table", margin: "auto" , color:"black"}}>Complete Your Free Account Setup</Card.Title>
                         <br />
                         <ListGroupItem className="centerit" >this.state.email</ListGroupItem>
                         <ListGroupItem className="centerit">I want to:</ListGroupItem>
                         <br />
                         <Form onSubmit={this.onSubmitForm}>
                         <ToggleButtonGroup style={{ display: "table", margin: "auto" }} type="radio" name="options" defaultValue={1}>
-                            <ToggleButton id="tbg-radio-1" value={"/jobcategories"} onChange={this.onChangeAccountForm} >
+                            <ToggleButton id="tbg-radio-1" variant="warning" value={"/jobcategories"} onChange={this.onChangeAccountForm} >
                                 Hire for a project
                             </ToggleButton>
-                            <ToggleButton style={{ width: "width: 180px" }} id="tbg-radio-2" value={"/accountform"} onChange={this.onChangeFreeLancerProfile}>
+                            <ToggleButton style={{ width: "width: 180px", backgroundColor:"#ffff004d", color:"black"  }}  id="tbg-radio-2" value={"/accountform"} onChange={this.onChangeFreeLancerProfile}>
                                 Works as a freelancer
                             </ToggleButton>
                         </ToggleButtonGroup>
@@ -100,7 +99,7 @@ class Logintype extends Component {
                         <Form.Group className="mb-3" id="formGridCheckbox" style={{ fontSize: "13px" }}>
                             <Form.Check required id="checkit" type="checkbox" label="Yes, I understand and agree to the FreelancerJo Terms of Service." for="checkit" />
                         </Form.Group>
-                        <Button className="centeritdef" type="submit" variant="primary">Create My Account</Button>{' '}
+                        <Button className="centeritdef" type="submit" variant="warning">Create My Account</Button>{' '}
                         </Form>
                     </Card.Body>
                 </Card>
