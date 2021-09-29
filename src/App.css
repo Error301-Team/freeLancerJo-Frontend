@@ -12,7 +12,9 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
+body{
+  margin: 0px;
+}
 .App-header {
   min-height: 100vh;
   display: flex;
