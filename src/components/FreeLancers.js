@@ -9,6 +9,7 @@ import {
     FloatingLabel,
     Button
 } from 'react-bootstrap';
+import Phtography1 from './Phtography1';
 class Phtography extends Component {
     constructor(props) {
         super(props);
@@ -17,6 +18,8 @@ class Phtography extends Component {
             showFilteredUsers: false,
             search: "",
             saver: "",
+            showUser: false,
+            user: {},
         }
     }
     componentDidMount = async () => {
@@ -70,8 +73,36 @@ class Phtography extends Component {
 
         }
     }
+    show = (Element) => {
+        this.setState({
+            showUser: true,
+            user: Element,
+        })
+    }
+    hide = () => {
+        this.setState({
+            showUser: false,
+        })
+    }
 
     render() {
+        if (this.state.showUser) {
+            return <>
+                <Spinner />
+                <Button variant="warning" onClick={this.hide} >Back</Button>
+                <Phtography1 job_describtion={this.state.user.job_describtion}
+                    name={this.state.user.name}
+                    phoneNumber={this.state.user.phoneNumber}
+                    email={this.state.user.email}
+                    location={this.state.user.location}
+                    lauguages={this.state.user.lauguages}
+                    skills={this.state.user.skills}
+                    experience={this.state.user.experience}
+                    price={this.state.user.price}
+                    img={this.state.user.img}
+                />
+            </>
+        }
         return (
             <>
                 <Spinner />
@@ -102,7 +133,7 @@ class Phtography extends Component {
                     {console.log(this.filterArray(this.state.users))}
                     {this.filterArray(this.state.users).map(Element => {
                         return (
-                            <div style={{ borderRadius: "15px"}}>
+                            <div onClick={e => this.show(Element)} style={{ borderRadius: "15px"}} >
                                 <div class="image-flip" style={{ borderRadius: "15px"}}>
                                     <div class="mainflip flip-0" style={{ borderRadius: "15px"}}>
                                         <div class="frontside" style={{ borderRadius: "15px"}}>
