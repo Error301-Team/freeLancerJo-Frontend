@@ -36,7 +36,6 @@
   }
 }
 
-<<<<<<< Updated upstream
 #spinner{
   position: absolute;
   z-index: 100;
@@ -52,8 +51,4 @@
   flex-wrap: nowrap;
   flex-direction: column;
   padding: 18%;
-=======
-.minHeight{
-  min-height: 750px;
->>>>>>> Stashed changes
 }
