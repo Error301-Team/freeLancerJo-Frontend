@@ -14,12 +14,14 @@
 .navDown{
     background-color: #082032 !important;
     width: 100% !important;
-    height: 90px !important;
+<<<<<<< Updated upstream
+    height: 65px !important;
+=======
+    height: 64px !important;
+>>>>>>> Stashed changes
     }
 
-.nav{
-    background-color: bisque !important;
-}
+
 
 #navicons{
     display: flex !important;
@@ -32,8 +34,13 @@
 .me-auto{
     justify-content: center;
 }
+<<<<<<< Updated upstream
 /* 
 .navDown{
+=======
+
+/* .navDown{
+>>>>>>> Stashed changes
     position: fixed;
     bottom: 0px;
 } */

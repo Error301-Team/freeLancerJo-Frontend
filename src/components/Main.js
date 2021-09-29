@@ -9,7 +9,7 @@ import LoginButton from './LoginButton';
 import Spinner from './Spinner';
 // import Button from './Button';
 import LogoutButton from './LogoutButton';
-import Phtography from './Phtography'
+import Phtography from './FreeLancers'
 
 class Main extends Component {
 
@@ -34,31 +34,92 @@ class Main extends Component {
     }
   }
 
+<<<<<<< Updated upstream
   render() {
     return (
+=======
+        return (
+            <div className="mainDiv" style={{minHeight:"728px;"}}>
+              <img className="mainImage" src={mainImage} alt="" />
+                {/* <Container>
+              <Card className="">
+       
+                  <Row className="justify-content-center">
+                    <Col className="order-lg-2" lg="8">
+                      
+                          <img
+                            alt="..."
+                            className="cardImage"
+                           src={freeL}
+                          />
+                     
+                     
+                    </Col>
+                 
+                      <div className=" py-5 " >
+                        <Button
+                         className=" button1 "
+
+                          href=""
+                          onClick={e => e.preventDefault()}
+                          size="sm"
+                        >
+                       Login as Member
+                        </Button>
+                       
+                        <Button
+              className=" button2 "
+                          href=""
+                          onClick={e => e.preventDefault()}
+                          size="sm"
+                        >
+                Log in as   User
+                        </Button>
+                      </div>
+            
+                 
+                  </Row>
+            
+                  <div className=" py-5 border-top text-center">
+                    <Row className="justify-content-center">
+                      <Col lg="9">
+                        <p>
+                         
+                   THIS IS OUR MAIN PAGE 
+                       
+                           </p>
+                     
+                      </Col>
+                    </Row>
+                  </div>
+           
+              </Card>
+            </Container> */}
+     
+            </div>
+>>>>>>> Stashed changes
 
       < div className="mainDiv" >
         <Spinner/>
         {
           this.props.auth0.isAuthenticated ?
             <>
-              <LogoutButton  />
               {/* <h1>{this.props.auth0.user.email}</h1> */}
               {/* <img src={this.props.auth0.user.picture} alt="" />  */}
               {/* <Button callApi={this.callApi} /> */}
             </> :
             <LoginButton callApi={this.callApi} />
         }
-        <img className="mainImage" src={mainImage} alt="" />
+        
+        <img className="mainImage" src={mainImage} alt="" style={{  objectFit: "cover", width: "100%",height: "100%",
+    }}/>
         <Button
           className=" button1 "
           style={{ backgroundColor: '#ffc107bf' }}
           href="Phtography"
-          // onClick={e => e.preventDefault()
-           
-          // <>
-         
-          // }
+          onClick={e => e.preventDefault()
+
+          }
         >
        Find FreeLancer
         </Button>

@@ -4,10 +4,8 @@ import Main from './components/Main';
 import Footer from './components/Footer';
 import Jobcategories from './components/Jobcategories';
 import Accountform from './components/Accountform';
-import Designs from './components/Designs';
-import Developent from './components/Developent';
 import Freelancerprofile from './components/Freelancerprofile'
-import Phtography from './components/Phtography';
+import FreeLancers from './components/FreeLancers';
 import Ourmission from './components/Ourmission';
 import Contactus from './components/Contactus';
 import PostJobOffer from './components/PostJobOffer';
@@ -51,79 +49,120 @@ class App extends Component {
         <Router>
           <Switch>
             <Route exact path="/">
+            <div style={{ minHeight: "590px" }}>
               <Header />
-              <div style={{ minHeight: "580px" }}>
+<<<<<<< Updated upstream
+                <Main />
+                </div>
+=======
+              <div style={{ minHeight: "580px"}}>
                 <Main />
               </div>
+>>>>>>> Stashed changes
               <Footer />
             </Route>
             <Route path="/contactus">
+              <div style={{ minHeight: "670px" }}>
               <Header />
-              <div style={{ minHeight: "580px" }}>
+<<<<<<< Updated upstream
                 <Contactus />
+=======
+              <div style={{ minHeight: "580px"}}>
+              <Contactus />
+>>>>>>> Stashed changes
               </div>
               <Footer />
             </Route>
             <Route path="/jobcategories">
               <Header />
-              <div style={{ minHeight: "455px" }}>
+<<<<<<< Updated upstream
+              <div style={{ minHeight: "590px" }}>
                 <Jobcategories />
+=======
+              <div style={{ minHeight: "455px"}}>
+              <Jobcategories />
+>>>>>>> Stashed changes
               </div>
               <Footer />
             </Route>
             <Route path="/accountform">
               <Header />
-              <div style={{ minHeight: "580px" }}>
+<<<<<<< Updated upstream
+              <div style={{ minHeight: "590px" }}>
                 <Accountform />
+=======
+              <div style={{ minHeight: "580px"}}>
+              <Accountform />
               </div>
               <Footer />
             </Route>
             <Route path="/designs">
               <Header />
-              <div style={{ minHeight: "580px" }}>
-                <Designs />
+              <div style={{ minHeight: "580px"}}>
+              <Designs />
               </div>
               <Footer />
             </Route>
             <Route path="/developent">
               <Header />
-              <div style={{ minHeight: "580px" }}>
-                <Developent />
+              <div style={{ minHeight: "580px"}}>
+              <Developent />
+>>>>>>> Stashed changes
               </div>
               <Footer />
             </Route>
             <Route path="/freelancerprofile">
               <Header />
-              <div style={{ minHeight: "580px" }}>
+<<<<<<< Updated upstream
+              <div style={{ minHeight: "590px" }}>
                 <Freelancerprofile />
+=======
+              <div style={{ minHeight: "580px"}}>
+              <Freelancerprofile />
+>>>>>>> Stashed changes
               </div>
               <Footer />
             </Route>
-            <Route path="/phtography">
+            <Route path="/FreeLancers">
               <Header />
-              <div style={{ minHeight: "580px" }}>
-                <Phtography />
+<<<<<<< Updated upstream
+              <div style={{ minHeight: "590px" }}>
+                <FreeLancers />
+=======
+              <div style={{ minHeight: "580px"}}>
+              <Phtography />
+>>>>>>> Stashed changes
               </div>
               <Footer />
             </Route>
             <Route path="/ourmission">
               <Header />
-              <div style={{ minHeight: "580px" }}>
+<<<<<<< Updated upstream
+              <div style={{ minHeight: "590px" }}>
                 <Ourmission />
+=======
+              <div style={{ minHeight: "580px"}}>
+              <Ourmission />
+>>>>>>> Stashed changes
               </div>
               <Footer />
             </Route>
             <Route path="/postjoboffer">
               <Header />
-              <div style={{ minHeight: "580px" }}>
+<<<<<<< Updated upstream
+              <div style={{ minHeight: "590px" }}>
                 <PostJobOffer />
               </div>
               <Footer />
             </Route>
             <Route path="/logintype">
               <Header />
-              <div style={{ minHeight: "580px" }}>
+              <div style={{ minHeight: "590px" }}>
                 <Logintype />
+=======
+              <div style={{ minHeight: "580px"}}>
+              <PostJobOffer />
+>>>>>>> Stashed changes
               </div>
               <Footer />
             </Route>
