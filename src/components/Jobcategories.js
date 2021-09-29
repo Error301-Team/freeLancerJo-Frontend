@@ -149,7 +149,7 @@ class Jobcategories extends Component {
   }
   render() {
     return (
-      <div style={{ height: "590px", paddingTop: '134px',  paddingBottom:"135px", backgroundColor:"#2c394b"}}>
+      <div style={{ paddingTop: '134px',  paddingBottom:"135px", backgroundColor:"#2c394b"}}>
         {this.state.showFilteredJobs && <Spinner />}
         {
           this.state.showFilteredJobs ? <>

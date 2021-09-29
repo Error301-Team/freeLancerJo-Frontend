@@ -102,7 +102,7 @@ class App extends Component {
               <div style={{ minHeight: "590px" }}>
                 <PostJobOffer />
               </div>
-              <Footer />
+              {/* <Footer /> */}
             </Route>
             <Route path="/logintype">
               <Header />
