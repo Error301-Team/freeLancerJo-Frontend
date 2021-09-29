@@ -21,6 +21,7 @@ class Logintype extends Component {
         }
     }
     componentDidMount = async () => {
+        if (this.props.auth0.isAuthenticated) {
         let users = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/getUsers`);
         let job = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/getJobs`);
         this.setState({
@@ -44,6 +45,7 @@ class Logintype extends Component {
                 });
             }
         }
+    }
     }
     onChangeAccountForm=(e)=>{
         this.setState({

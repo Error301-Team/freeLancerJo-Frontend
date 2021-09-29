@@ -23,6 +23,7 @@ class PJobOffers extends Component {
     }
     submitHandle = async (e) => {
         // e.preventDefault();
+        if (this.props.auth0.isAuthenticated) {
         let users = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/getUsers`);
         let foundFreelancer = users.data.find(Element => Element.email == this.props.auth0.user.email);
         let getJobs = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/getJobs`);
@@ -43,6 +44,7 @@ class PJobOffers extends Component {
                 applyBoolean: true,
             })
         }
+    }
     }
     hi2 = (tee) => {
         let id = tee
