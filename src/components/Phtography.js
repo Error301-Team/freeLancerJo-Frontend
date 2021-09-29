@@ -25,7 +25,6 @@ class Phtography extends Component {
     componentDidMount = async () => {
         let data = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/getUsers`)
         let result = data.data
-        console.log(result);
         this.setState({
             users: result
         });

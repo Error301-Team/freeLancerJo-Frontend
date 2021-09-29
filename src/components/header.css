@@ -43,6 +43,10 @@ background-color: #082032 !important;
 width: 100% !important;
 height: 90px !important;
 }
+.img{
+    width: 70px;
+    height: 70px;
+}
 
 /* .test {
     height:100px;

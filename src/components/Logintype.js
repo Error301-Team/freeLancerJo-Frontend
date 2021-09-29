@@ -27,8 +27,8 @@ class Logintype extends Component {
             users: users.data,
             job: job.data
         })
-        let foundFreelancer = (this.state.users).find(Element => Element.email == this.props.auth0.user.email);
-        let foundJob = (this.state.job).find(Element => Element.email == this.props.auth0.user.email);
+        let foundFreelancer = await (this.state.users).find(Element => Element.email == this.props.auth0.user.email);
+        let foundJob =await (this.state.job).find(Element => Element.email == this.props.auth0.user.email);
         if (foundFreelancer || foundJob) {
             this.setState({
                 found: true,

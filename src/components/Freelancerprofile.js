@@ -16,9 +16,7 @@ export class Freelancerprofile extends Component {
 
     componentDidMount = async () => {
         let data = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/getUsers`)
-
-        console.log(data);
-        let result = data.data.find(user => user.email == this.props.auth0.user.email)
+        let result =  await data.data.find(user => user.email == this.props.auth0.user.email)
         this.setState({
             users: result
         });
