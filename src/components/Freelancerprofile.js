@@ -14,15 +14,15 @@ export class Freelancerprofile extends Component {
     }
 
     componentDidMount = async () => {
-        let data = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/getUsers`)
-
-        console.log(data);
-        let result = data.data.find(user => user.email == this.props.auth0.user.email)
-        this.setState({
-            users: result
-        });
-
-        // console.log(this.props.auth0.user.email);
+        if (this.props.auth0.isAuthenticated) {
+            let data = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/getUsers`)
+            console.log(data);
+            console.log(this.props.auth0.user.email)
+            let result = data.data.find(user => user.email == this.props.auth0.user.email)
+            this.setState({
+                users: result
+            });
+        }
     }
     // componentDidMount = async () => {
     //     console.log(this.props.auth0.user.email );
@@ -49,6 +49,7 @@ export class Freelancerprofile extends Component {
                             <div class="col-lg-6">
                                 <div class="about-text go-to">
                                     <h3 class="dark-color">About Me</h3>
+                                    {console.log(this.state.users)}
                                     <h6 class="theme-color lead"></h6>
                                     <p><mark>{this.state.users.job_describtion}</mark>.</p>
                                     <div class="row about-list">
