@@ -56,7 +56,7 @@ class App extends Component {
               <Footer />
             </Route>
             <Route path="/contactus">
-              <div style={{ minHeight: "670px" }}>
+              <div style={{ minHeight: "688px" }}>
               <Header />
                 <Contactus />
               </div>
@@ -64,7 +64,7 @@ class App extends Component {
             </Route>
             <Route path="/jobcategories">
               <Header />
-              <div style={{ minHeight: "590px" }}>
+              <div style={{ minHeight: "607px" }}>
                 <Jobcategories />
               </div>
               <Footer />
@@ -92,7 +92,7 @@ class App extends Component {
             </Route>
             <Route path="/ourmission">
               <Header />
-              <div style={{ minHeight: "590px" }}>
+              <div style={{ minHeight: "607px" }}>
                 <Ourmission />
               </div>
               <Footer />

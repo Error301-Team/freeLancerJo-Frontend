@@ -84,8 +84,8 @@ class Logintype extends Component {
 
                         <Card.Title style={{ display: "table", margin: "auto" , color:"black"}}>Complete Your Free Account Setup</Card.Title>
                         <br />
-                        <ListGroupItem className="centerit" >this.state.email</ListGroupItem>
-                        <ListGroupItem className="centerit">I want to:</ListGroupItem>
+                        <ListGroupItem className="centerit" ></ListGroupItem>
+                        <ListGroupItem className="centerit"><h5>I want to:</h5></ListGroupItem>
                         <br />
                         <Form onSubmit={this.onSubmitForm}>
                         <ToggleButtonGroup style={{ display: "table", margin: "auto" }} type="radio" name="options" defaultValue={1}>
