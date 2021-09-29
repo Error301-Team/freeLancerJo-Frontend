@@ -24,20 +24,6 @@ export class Freelancerprofile extends Component {
             });
         }
     }
-    // componentDidMount = async () => {
-    //     console.log(this.props.auth0.user.email );
-
-    //     let data = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/auth`)
-
-    //     console.log(data);
-    //     let result = data.data.filter(user => user.email == (this.props.auth0.user.email))
-    //     console.log(result);
-    //     this.setState({
-    //         users: result[0]
-
-    //     });
-    //     console.log(this.state.users);
-    // }
 
     render() {
         return (
