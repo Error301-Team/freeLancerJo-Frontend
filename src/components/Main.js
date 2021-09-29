@@ -23,6 +23,7 @@ class Main extends Component {
     }
   }
   componentDidMount = async () => {
+    if (this.props.auth0.isAuthenticated) {
     let users = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/getUsers`);
     let job = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/getJobs`);
     let foundFreelancer = users.data.find(Element => Element.email == this.props.auth0.user.email);
@@ -32,6 +33,7 @@ class Main extends Component {
         redirect: true,
       });
     }
+  }
   }
   callApi = () => {
     if (this.props.auth0.isAuthenticated) {
