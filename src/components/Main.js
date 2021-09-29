@@ -34,8 +34,70 @@ class Main extends Component {
     }
   }
 
+<<<<<<< Updated upstream
   render() {
     return (
+=======
+        return (
+            <div className="mainDiv" style={{minHeight:"728px;"}}>
+              <img className="mainImage" src={mainImage} alt="" />
+                {/* <Container>
+              <Card className="">
+       
+                  <Row className="justify-content-center">
+                    <Col className="order-lg-2" lg="8">
+                      
+                          <img
+                            alt="..."
+                            className="cardImage"
+                           src={freeL}
+                          />
+                     
+                     
+                    </Col>
+                 
+                      <div className=" py-5 " >
+                        <Button
+                         className=" button1 "
+
+                          href=""
+                          onClick={e => e.preventDefault()}
+                          size="sm"
+                        >
+                       Login as Member
+                        </Button>
+                       
+                        <Button
+              className=" button2 "
+                          href=""
+                          onClick={e => e.preventDefault()}
+                          size="sm"
+                        >
+                Log in as   User
+                        </Button>
+                      </div>
+            
+                 
+                  </Row>
+            
+                  <div className=" py-5 border-top text-center">
+                    <Row className="justify-content-center">
+                      <Col lg="9">
+                        <p>
+                         
+                   THIS IS OUR MAIN PAGE 
+                       
+                           </p>
+                     
+                      </Col>
+                    </Row>
+                  </div>
+           
+              </Card>
+            </Container> */}
+     
+            </div>
+>>>>>>> Stashed changes
 
       < div className="mainDiv" >
         <Spinner/>
