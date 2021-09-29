@@ -4,7 +4,9 @@ import axios from 'axios';
 import './Accountform.css'
 import Spinner from './Spinner';
 import { withAuth0 } from '@auth0/auth0-react';
-
+import {
+    Redirect
+  } from "react-router-dom";
 class Accountform extends Component {
     constructor(props) {
         super(props);
@@ -28,36 +30,36 @@ class Accountform extends Component {
             To: '',
             Education: { School: "", AreaOfStudys: "", Degree: "", To: "", From: "" },
             usersList: [],
+            newAcc:false,
+            path:"/freelancerprofile"
         }
     }
     submitHandle = async (e) => {
         e.preventDefault();
-        let AreaOfStudys = this.state.To;
-        let Degree = this.state.From;
-        let To = this.state.AreaOfStudys;
-        let From = this.state.AreaOfStudys;
-        let School = this.state.School
-        let data = {
-            name: `${this.state.firstname} ${this.state.surname}`,
-            phoneNumber: this.state.phoneNumber,
-            email: this.props.auth0.user.email,
-            img: this.state.img,
-            job_describtion: this.state.job_describtion,
-            skills: this.state.skills.split(','),
-            lauguages: this.state.lauguages.split(','),
-            price: this.state.price,
-            location: this.state.location,
-            experience: this.state.experience,
-            Education: { AreaOfStudys: AreaOfStudys, Degree: Degree, From: From, To: To, School: School },
-            // madeBy:"Wasem",
-            // accoutType:"freelacer",
-            // auth0:"done",   
+        if (this.props.auth0.isAuthenticated) {
+            let AreaOfStudys = this.state.To;
+            let Degree = this.state.From;
+            let To = this.state.AreaOfStudys;
+            let From = this.state.AreaOfStudys;
+            let School = this.state.School
+            let data = {
+                name: `${this.state.firstname} ${this.state.surname}`,
+                phoneNumber: this.state.phoneNumber,
+                email: this.props.auth0.user.email,
+                img: this.state.img,
+                job_describtion: this.state.job_describtion,
+                skills: this.state.skills.split(','),
+                lauguages: this.state.lauguages.split(','),
+                price: this.state.price,
+                location: this.state.location,
+                experience: this.state.experience,
+                Education: { AreaOfStudys: AreaOfStudys, Degree: Degree, From: From, To: To, School: School },
+            }
+            let newUsersList = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/createUser`, data);
+            this.setState({
+                newAcc:true
+            })
         }
-        console.log(data);
-        let newUsersList = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/createUser`, data);
-        console.log(newUsersList);
-
-        console.log(this.props.auth0.user.email);
     }
 
     handleChangesurname = (e) => {
@@ -215,6 +217,7 @@ class Accountform extends Component {
                                     <Button variant="primary" type="submit">
                                         Submit
                                     </Button>
+                             {this.state.newAcc&&<Redirect to={this.state.path}/>}
                                 </div>
                             </div>
                             <div class="col-md-4">
