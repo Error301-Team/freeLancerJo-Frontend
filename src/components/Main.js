@@ -14,7 +14,6 @@ import {
   Redirect
 } from "react-router-dom";
 class Main extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -26,10 +25,9 @@ class Main extends Component {
   componentDidMount = async () => {
     let users = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/getUsers`);
     let job = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/getJobs`);
-
     let foundFreelancer = users.data.find(Element => Element.email == this.props.auth0.user.email);
     let foundJob = job.data.find(Element => Element.email == this.props.auth0.user.email);
-    if (foundFreelancer || foundJob) {
+    if (!(foundFreelancer) && !(foundJob)) {
       this.setState({
         redirect: true,
       });
@@ -57,7 +55,7 @@ class Main extends Component {
   }
 
   render() {
-    if (this.state.redirect) {
+    if (this.state.redirect ) {
       return <Redirect to={this.state.rediredtUrlLoginType} />
     } 
     return (
