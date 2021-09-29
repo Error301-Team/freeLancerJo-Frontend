@@ -14,7 +14,6 @@
 }
 
 .App-header {
-  background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -37,6 +36,7 @@
   }
 }
 
+<<<<<<< Updated upstream
 #spinner{
   position: absolute;
   z-index: 100;
@@ -52,4 +52,8 @@
   flex-wrap: nowrap;
   flex-direction: column;
   padding: 18%;
+=======
+.minHeight{
+  min-height: 750px;
+>>>>>>> Stashed changes
 }
