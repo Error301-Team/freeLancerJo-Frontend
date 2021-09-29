@@ -9,7 +9,7 @@ ReactDOM.render(
   <Auth0Provider
     domain={process.env.REACT_APP_AUTH0_DOMAIN}
     clientId={process.env.REACT_APP_AUTH0_CLIENTID}
-    redirectUri="http://localhost:3000/logintype"
+    redirectUri="https://focused-hawking-68379b.netlify.app/logintype"
     
   >
   <App />
