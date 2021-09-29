@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import JobPost from "../assets/JobPost.png";
 import { Button } from 'react-bootstrap'
-import './postjoboffer.css'
+ import './postjoboffer.css'
 import { withAuth0 } from '@auth0/auth0-react'
 import axios from 'axios';
 class PJobOffers extends Component {
