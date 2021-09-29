@@ -1,0 +1,35 @@
+.cardImage {
+position: relative;
+max-width: 500px;
+transform: translate(-50%,-10%);
+left: 50%;
+  }
+        
+.mainImage{
+  /* object-fit: cover; */
+  /* width: 100%; */
+/*  
+  position: fixed; 
+  top: 0;
+  z-index: -5; */
+}
+
+.card{
+  background-color: transparent !important;
+}
+
+
+
+
+
+.button1{
+  text-align: center;
+  display: inline-block;
+  border-radius: 4px;
+  border: none;
+  width: 13%;
+  cursor: pointer;
+  position: absolute;
+  top: 775px;
+  left: 660px;
+}
