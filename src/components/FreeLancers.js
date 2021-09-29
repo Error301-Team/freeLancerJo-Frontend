@@ -100,6 +100,7 @@ class Phtography extends Component {
                     experience={this.state.user.experience}
                     price={this.state.user.price}
                     img={this.state.user.img}
+                    Education={this.state.user.Education}
                 />
             </>
         }
@@ -142,7 +143,12 @@ class Phtography extends Component {
                                                     <p><img class=" img-fluid" style={{ objectFit: 'cover' }} src={Element.img} alt="card image" /></p>
                                                     <h5 class="card-title">{Element.name}</h5>
                                                     <p class="card-text">{Element.job_describtion}</p>
-                                                    <h6>Skills:</h6><p> {Element.skills}</p>
+                                                    <h6>Skills:</h6>
+                                                    {Element.skills.map(Element => {
+                                                    return (
+                                                        <p>{Element}</p>
+                                                    )
+                                                })}
                                                     <h6>Rating:</h6><p> {Element.rating}</p>
                                                     <h6>Price Per/Hour:</h6><p> {Element.price}</p>
                                                 </div>
@@ -153,7 +159,12 @@ class Phtography extends Component {
                                                 <div class="card-body text-center mt-4" style={{ borderRadius: "15px"}}>
                                                     <h6 class="card-title">Experience:</h6><p> {Element.experience}</p>
                                                     {/* <h6 class="card-title">Education : "{Element.Education}"</h6> */}
-                                                    <h6 class="card-title">Languages:</h6><p> {Element.lauguages}</p>
+                                                    <h6 class="card-title">Languages:</h6>
+                                                    {Element.lauguages.map(Element => {
+                                                    return (
+                                                        <p>{Element}</p>
+                                                    )
+                                                })}
                                                     <h6 class="card-title">Location:</h6><p> {Element.location}</p>
                                                     <h6 class="card-title">Phone:</h6><p> {Element.phoneNumber}</p>
                                                     <h6 class="card-title">Email:</h6><p> {Element.email}</p>
