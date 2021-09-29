@@ -15,10 +15,8 @@ class Header extends Component {
  
         }
     }
-
-    }
+    
     render() {
-      
         return (
             <>
 
@@ -56,6 +54,7 @@ class Header extends Component {
 
             </>
         )
-    }
+                        }     
+    
 }
 export default withAuth0(Header)
