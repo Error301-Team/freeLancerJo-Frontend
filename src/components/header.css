@@ -37,11 +37,17 @@ div.container{
     justify-content: center;
     margin: auto;
 }
-
+#navbar-style{
+    margin: 0px;
+    background-color: #082032;
+    width: 100%;
+    padding: 0px 148px;
+}
 .navBack{
 background-color: #082032 !important;
 width: 100% !important;
-height: 90px !important;
+height: 16px !important;
+z-index: 50px !important;
 }
 
 /* .test {

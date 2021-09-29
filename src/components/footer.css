@@ -14,12 +14,10 @@
 .navDown{
     background-color: #082032 !important;
     width: 100% !important;
-    height: 90px !important;
+    height: 65px !important;
     }
 
-.nav{
-    background-color: bisque !important;
-}
+
 
 #navicons{
     display: flex !important;

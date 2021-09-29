@@ -14,7 +14,7 @@ export class Spinner extends Component {
                     $('#spinner').delay(1000).fadeOut(1000);
                 })
             }>
-                <div id="spinner" style={{position: "fixed", top:"0"}}>
+                <div id="spinner" style={{position: "fixed", top:"0", left: "0"}}>
                     <img id="logogif" src={logoGif} alt="" style={{ zIndex: "100" }} />
                 </div>
             </div>
