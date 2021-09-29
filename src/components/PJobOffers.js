@@ -85,7 +85,7 @@ class PJobOffers extends Component {
                                                     <h6>Location:</h6><p>{element.location}</p>
                                                     <h6>Phone:</h6><p>{element.phononumber}</p>
                                                     <h6>Email:</h6><p>{element.email}</p>
-                                                    {element.applied.find(Element => Element.email == this.props.auth0.user.email) ? <Button variant="primary">Applied</Button> : <Button className="applyBtn" onClick={(e) => this.hi2(element._id)} variant="primary">Apply for this job</Button>}
+                                                    {this.props.auth0.isAuthenticated&&element.applied.find(Element => Element.email == this.props.auth0.user.email) ? <Button variant="primary">Applied</Button> : <Button className="applyBtn" onClick={(e) => this.hi2(element._id)} variant="primary">Apply for this job</Button>}
                                                 </div>
                                             </div>
                                         </article>
