@@ -92,6 +92,8 @@ img {
   background: #ffffff;
   border-radius: 10px;
   box-shadow: 0 0 30px rgba(31, 45, 61, 0.125);
+  position: relative;
+  top: 67px;
 }
 .about-section .counter .count-data {
   margin-top: 10px;
