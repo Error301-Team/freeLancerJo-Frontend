@@ -10,9 +10,30 @@ import Spinner from './Spinner';
 // import Button from './Button';
 import LogoutButton from './LogoutButton';
 import Phtography from './FreeLancers'
-
+import {
+  Redirect
+} from "react-router-dom";
 class Main extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      redirect: false,
+      rediredtUrlLoginType: "/logintype",
 
+    }
+  }
+  componentDidMount = async () => {
+    let users = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/getUsers`);
+    let job = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/getJobs`);
+
+    let foundFreelancer = users.data.find(Element => Element.email == this.props.auth0.user.email);
+    let foundJob = job.data.find(Element => Element.email == this.props.auth0.user.email);
+    if (foundFreelancer || foundJob) {
+      this.setState({
+        redirect: true,
+      });
+    }
+  }
   callApi = () => {
     if (this.props.auth0.isAuthenticated) {
       this.props.auth0.getIdTokenClaims()
@@ -35,6 +56,9 @@ class Main extends Component {
   }
 
   render() {
+    if (this.state.redirect) {
+      return <Redirect to={this.state.rediredtUrlLoginType} />
+    }
     return (
 
       < div className="mainDiv" >
@@ -48,9 +72,10 @@ class Main extends Component {
             </> :
             <LoginButton callApi={this.callApi} />
         }
-        
-        <img className="mainImage" src={mainImage} alt="" style={{  objectFit: "cover", width: "100%",height: "100%",
-    }}/>
+
+        <img className="mainImage" src={mainImage} alt="" style={{
+          objectFit: "cover", width: "100%", height: "100%",
+        }} />
         <Button
           className=" button1 "
           style={{ backgroundColor: '#ffc107bf' }}
