@@ -31,27 +31,42 @@ class Phtography1 extends Component {
                                                 <label>Location</label>
                                                 <p>{this.props.location}</p>
                                             </div>
-                                        </div>
-                                        <div class="col-md-6">
                                             <div class="media">
                                                 <label>Languages</label>
-                                                <p>{this.props.lauguages}</p>
+                                                {this.props.lauguages.map(Element => {
+                                                    return (
+                                                        <p>{Element}</p>
+                                                    )
+                                                })}
+                                            </div>
+                                            
+                                        </div>
+
+                                        <div class="col-md-6">
+                                        <div class="media">
+                                                <label>Experience</label>
+                                                <p>{this.props.experience}</p>
                                             </div>
                                             <div class="media">
                                                 <label> Skills</label>
                                                 {this.props.skills.map(Element => {
                                                     return (
-                                                        <li>{Element}</li>
+                                                        <p>{Element}</p>
                                                     )
                                                 })}
                                             </div>
-                                            <div class="media">
-                                                <label>Experience</label>
-                                                <p>{this.props.experience}</p>
-                                            </div>
+                                            
                                             <div class="media">
                                                 <label>Price</label>
                                                 <p>{this.props.price}$</p>
+                                            </div>
+                                            <div class="media">
+                                                <label>Education</label>
+                                                <p>College : {this.props.Education.School}</p>
+                                                <p>Area Of Studys : {this.props.Education.AreaOfStudys}</p>
+                                                <p>Degree : {this.props.Education.Degree}</p>
+                                                <p>From : {this.props.Education.From}</p>
+                                                <p>To : {this.props.Education.To}</p>
                                             </div>
                                         </div>
                                     </div>
