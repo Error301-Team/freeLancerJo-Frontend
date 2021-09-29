@@ -12,39 +12,13 @@ class Header extends Component {
     constructor(props){
         super(props);
         this.state={
-            img:"",
-            userName:""
+ 
         }
     }
-    profile = async () => {
-        let users = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/getUsers`);
-        let foundFreelancer = await users.data.find(Element => Element.email == this.props.auth0.user.email);
-        if (foundFreelancer) {
-            console.log(foundFreelancer);
-            if (foundFreelancer.img && foundFreelancer.img.includes("https")) {
-                this.setState({
-                    img: foundFreelancer.img,
-                    userName: foundFreelancer.name
-                });
-            } else {
-                this.setState({
-                    img: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png",
-                    userName: foundFreelancer.name
-                });
-                console.log("hi")
-            }
-        } else if (!(foundFreelancer)) {
-            this.setState({
-                img: this.props.auth0.user.picture,
-                userName: this.props.auth0.user.given_name.concat(" ", this.props.auth0.user.family_name)
-            })
 
-
-        }
     }
     render() {
-        const { isAuthenticated } = this.props.auth0;
-        isAuthenticated && setTimeout(() => { this.profile() }, 0);
+      
         return (
             <>
 
@@ -60,11 +34,6 @@ class Header extends Component {
                                 <Link to="/freelancerprofile" className="nav-link">Free Lancer Profile</Link>
                                 <Link to="/FreeLancers" className="nav-link">Our FreeLancers</Link>
                                 <Link to="/postjoboffer" className="nav-link">Post Job Offer</Link>
-                                {this.props.auth0.isAuthenticated && <><Image className="img" src={this.state.img} roundedCircle />
-                                            <Navbar.Text>
-                                                <Link to="/freelancerprofile" className="nav-link">{this.state.userName}</Link>
-                                            </Navbar.Text></>}
-                                        {console.log(this.state.img)}
                             </Nav>
                         </Col>
                         <Col lg={2}>
