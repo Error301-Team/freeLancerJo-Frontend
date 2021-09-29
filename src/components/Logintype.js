@@ -3,6 +3,7 @@ import { Form, ToggleButtonGroup, ToggleButton, Button, Card, ListGroupItem } fr
 import "./logintype.css"
 import axios from 'axios';
 import { withAuth0 } from '@auth0/auth0-react'
+import Spinner from './Spinner';
 import {
     Redirect
   } from "react-router-dom";
@@ -74,6 +75,7 @@ class Logintype extends Component {
         }
         return (
             <div id="formstyle" style={{ padding: "50px" }}>
+                <Spinner/>
                 {!(this.state.showFilteredUsers)&&<Card className="p-3 mb-2 bg-light text-dark" style={{ width: '30rem', display: "table !important", margin: "auto" }}>
                     <Card.Img className="centerit" style={{ width: '5rem', borderRadius: "50%" }} variant="top" src="https://via.placeholder.com/100x100" />
                     <Card.Body>
