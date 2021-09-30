@@ -22,7 +22,7 @@ class Main extends Component {
 
     }
   }
-  componentDidMount = async () => {
+  check = async () => {
     console.log(this.props.auth0.isAuthenticated)
     if (this.props.auth0.isAuthenticated) {
     let users = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/getUsers`);
@@ -59,6 +59,8 @@ class Main extends Component {
   }
 
   render() {
+    const { isAuthenticated } = this.props.auth0;
+        isAuthenticated && setTimeout(() => { this.check() }, 250);
     if (this.state.redirect ) {
       return <Redirect to={this.state.rediredtUrlLoginType} />
     } 
