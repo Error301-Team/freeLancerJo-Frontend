@@ -23,12 +23,14 @@ class Main extends Component {
     }
   }
   componentDidMount = async () => {
+    console.log(this.props.auth0.isAuthenticated)
     if (this.props.auth0.isAuthenticated) {
     let users = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/getUsers`);
     let job = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/getJobs`);
     let foundFreelancer = users.data.find(Element => Element.email == this.props.auth0.user.email);
     let foundJob = job.data.find(Element => Element.email == this.props.auth0.user.email);
-    if (!(foundFreelancer) || !(foundJob)) {
+    console.log(!(foundFreelancer) && !(foundJob));
+    if (!(foundFreelancer) && !(foundJob)) {
       this.setState({
         redirect: true,
       });
