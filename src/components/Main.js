@@ -28,7 +28,7 @@ class Main extends Component {
     let job = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/getJobs`);
     let foundFreelancer = users.data.find(Element => Element.email == this.props.auth0.user.email);
     let foundJob = job.data.find(Element => Element.email == this.props.auth0.user.email);
-    if (!(foundFreelancer) && !(foundJob)) {
+    if (!(foundFreelancer) || !(foundJob)) {
       this.setState({
         redirect: true,
       });
