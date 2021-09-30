@@ -46,7 +46,7 @@ class Accountform extends Component {
                 name: `${this.state.firstname} ${this.state.surname}`,
                 phoneNumber: this.state.phoneNumber,
                 email: this.props.auth0.user.email,
-                img: this.state.img,
+                img: (this.state.img).includes("https:")?this.state.img :"https://img2.thejournal.ie/inline/1881369/original/?width=630&version=1881369",
                 job_describtion: this.state.job_describtion,
                 skills: this.state.skills.split(','),
                 lauguages: this.state.lauguages.split(','),
